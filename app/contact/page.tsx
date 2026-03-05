@@ -39,7 +39,7 @@ export default function Contact() {
               <label className="text-sm">
                 Name <span className="text-[#c1121f]">*</span>
                 <input
-                  className="mt-1 w-full rounded-xl border border-black/20 px-3 py-2"
+                  className="mt-1 mx-auto w-full max-w-[1400px] rounded-xl border border-black/20 px-3 py-2"
                   name="name"
                   required
                 />
@@ -48,7 +48,7 @@ export default function Contact() {
               <label className="text-sm">
                 Phone <span className="text-[#c1121f]">*</span>
                 <input
-                  className="mt-1 w-full rounded-xl border border-black/20 px-3 py-2"
+                  className="mt-1 mx-auto w-full max-w-[1400px] rounded-xl border border-black/20 px-3 py-2"
                   name="phone"
                   required
                   inputMode="tel"
@@ -58,7 +58,7 @@ export default function Contact() {
               <label className="text-sm md:col-span-2">
                 Email
                 <input
-                  className="mt-1 w-full rounded-xl border border-black/20 px-3 py-2"
+                  className="mt-1 mx-auto w-full max-w-[1400px] rounded-xl border border-black/20 px-3 py-2"
                   type="email"
                   name="email"
                 />
@@ -67,7 +67,7 @@ export default function Contact() {
               <label className="text-sm md:col-span-2">
                 Project Address / City
                 <input
-                  className="mt-1 w-full rounded-xl border border-black/20 px-3 py-2"
+                  className="mt-1 mx-auto w-full max-w-[1400px] rounded-xl border border-black/20 px-3 py-2"
                   name="location"
                 />
               </label>
@@ -75,7 +75,7 @@ export default function Contact() {
               <label className="text-sm md:col-span-2">
                 Service Needed
                 <select
-                  className="mt-1 w-full rounded-xl border border-black/20 px-3 py-2"
+                  className="mt-1 mx-auto w-full max-w-[1400px] rounded-xl border border-black/20 px-3 py-2"
                   name="service"
                   defaultValue="Core Drilling"
                 >
@@ -91,7 +91,7 @@ export default function Contact() {
               <label className="text-sm md:col-span-2">
                 Details
                 <textarea
-                  className="mt-1 w-full rounded-xl border border-black/20 px-3 py-2"
+                  className="mt-1 mx-auto w-full max-w-[1400px] rounded-xl border border-black/20 px-3 py-2"
                   name="message"
                   rows={6}
                   placeholder="What do you need done? Include approximate dimensions, thickness, access notes, and timeline if you can."
@@ -100,7 +100,7 @@ export default function Contact() {
             </div>
 
             <button
-              className="mt-6 w-full rounded-xl bg-[#c1121f] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:opacity-95"
+              className="mt-6 mx-auto w-full max-w-[1400px] rounded-xl bg-[#c1121f] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:opacity-95"
               type="submit"
             >
               Send Request

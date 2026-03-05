@@ -19,9 +19,9 @@ const steps = [
 export default function Home() {
   return (
     <>
-      {/* HERO */}
+      {/* HERO (full-bleed background, wide container, less vertical height) */}
       <section className="bg-[#0d0d0d] text-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-24 md:grid-cols-2 md:items-center">
+        <div className="mx-auto grid w-full max-w-[1400px] gap-10 px-6 py-14 md:grid-cols-2 md:items-center">
           <div>
             <p className="text-sm tracking-widest text-white/70">GOLDSBORO, NC</p>
 
@@ -35,7 +35,7 @@ export default function Home() {
               and demolition services across Eastern North Carolina.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/contact"
                 className="rounded-xl bg-[#c1121f] px-6 py-3 text-center text-sm font-semibold shadow-sm hover:opacity-95"
@@ -51,7 +51,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/70">
+            <div className="mt-7 flex flex-wrap gap-3 text-sm text-white/70">
               <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
                 Fast response
               </span>
@@ -64,15 +64,13 @@ export default function Home() {
             </div>
           </div>
 
-          {/* INFO PANEL */}
+          {/* Info panel */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
             <div className="h-1 w-12 rounded bg-[#c1121f]" />
-
             <h2 className="mt-4 text-xl font-semibold">What we can help with</h2>
-
             <p className="mt-2 text-white/70">
-              If you need an opening, a clean cut, or controlled demolition,
-              we’ll guide you through the best approach.
+              If you need an opening, a clean cut, or controlled demolition, we’ll guide you through
+              the best approach.
             </p>
 
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -92,12 +90,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
-      <section className="mx-auto max-w-7xl px-4 py-14">
+      {/* HOW IT WORKS (wider, slightly less padding) */}
+      <section className="mx-auto w-full max-w-[1400px] px-6 py-12">
         <h2 className="text-2xl font-bold">How it works</h2>
         <p className="mt-2 text-sm text-black/70">Simple, straightforward process.</p>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-4">
+        <div className="mt-7 grid gap-4 md:grid-cols-4">
           {steps.map(([num, title, desc]) => (
             <div key={title} className="rounded-2xl border border-black/10 bg-black/[0.03] p-5">
               <div className="text-sm font-bold text-[#c1121f]">Step {num}</div>
@@ -109,7 +107,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section className="mx-auto max-w-7xl px-4 pb-14">
+      <section className="mx-auto w-full max-w-[1400px] px-6 pb-12">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <h2 className="text-2xl font-bold">Services</h2>
@@ -126,13 +124,11 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
+        <div className="mt-7 grid gap-6 md:grid-cols-3">
           {services.map((s) => (
             <div key={s.title} className="rounded-2xl border border-black/10 p-6 shadow-sm">
               <div className="h-1 w-10 rounded bg-[#c1121f]" />
-
               <h3 className="mt-4 text-lg font-semibold">{s.title}</h3>
-
               <p className="mt-2 text-sm text-black/70">{s.desc}</p>
 
               <div className="mt-5 flex gap-3">
@@ -156,19 +152,16 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIALS */}
-      <Testimonials compact />
+      <div className="mx-auto w-full max-w-[1400px] px-6 pb-12">
+        <Testimonials compact />
+      </div>
 
-      {/* CTA */}
+      {/* CTA (full-bleed like your example) */}
       <section className="bg-[#c1121f] text-white">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 py-12 md:flex-row md:items-center">
+        <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start justify-between gap-6 px-6 py-10 md:flex-row md:items-center">
           <div>
-            <h3 className="text-2xl font-bold">
-              Need Concrete Cutting or Demolition?
-            </h3>
-
-            <p className="mt-2 text-white/85">
-              Call now or request a quote — we’ll respond quickly.
-            </p>
+            <h3 className="text-2xl font-bold">Need Concrete Cutting or Demolition?</h3>
+            <p className="mt-2 text-white/85">Call now or request a quote — we’ll respond quickly.</p>
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row">
@@ -178,7 +171,6 @@ export default function Home() {
             >
               Request a Quote
             </Link>
-
             <a
               href="tel:+19194292619"
               className="rounded-xl border border-white/30 px-6 py-3 text-sm font-semibold"
