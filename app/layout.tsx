@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const SITE_URL = "https://xtremeconcretecutting.com"; // update if your final domain is different
+const SITE_URL = "https://xtremeconcretecutting.com"; // update later if needed
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -20,8 +20,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // LocalBusiness structured data (JSON-LD)
-  const jsonLd = {
+  // LocalBusiness Schema
+  const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Xtreme Concrete Cutting & Demolition LLC",
@@ -51,39 +51,42 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         closes: "18:00",
       },
     ],
-    // What you do (no fake claims—just your listed services)
     makesOffer: [
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Core Drilling" },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Concrete Slab Cutting" },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Concrete Wall Cutting" },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Reinforced Concrete Cutting" },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Building Demolition" },
-      },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Core Drilling" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Concrete Slab Cutting" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Concrete Wall Cutting" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Reinforced Concrete Cutting" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Building Demolition" } },
     ],
+  };
+
+  // Website Schema
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Xtreme Concrete Cutting & Demolition",
+    url: SITE_URL,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_URL}/?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
   };
 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-white text-[#0d0d0d]">
-        {/* Structured Data for Google */}
+
+        {/* LocalBusiness Structured Data */}
         <script
           type="application/ld+json"
-          // JSON-LD must be a string
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+
+        {/* Website Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
 
         <Header />
