@@ -1,12 +1,6 @@
 import Link from "next/link";
 
 export default function Contact() {
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    // allow the browser to perform a normal POST
-    const form = e.currentTarget;
-    form.submit();
-  }
-
   return (
     <section className="mx-auto max-w-3xl px-4 py-14">
       <h1 className="text-3xl font-bold">Request a Quote</h1>
@@ -30,7 +24,6 @@ export default function Contact() {
           action="/thank-you"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          onSubmit={handleSubmit}
         >
           {/* Netlify required hidden field */}
           <input type="hidden" name="form-name" value="quote" />
@@ -86,7 +79,9 @@ export default function Contact() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <label className="text-sm font-semibold">Approx. Dimensions</label>
+                <label className="text-sm font-semibold">
+                  Approx. Dimensions
+                </label>
                 <input
                   name="dimensions"
                   className="mt-1 w-full rounded-lg border border-black/15 px-3 py-2 text-sm"
