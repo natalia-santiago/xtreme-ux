@@ -19,18 +19,18 @@ export default function Contact() {
 
     const form = e.currentTarget;
 
-    // Collect fields from the form
     const formData = new FormData(form);
     const data: Record<string, string> = {};
     formData.forEach((value, key) => {
       data[key] = String(value);
     });
 
-    // IMPORTANT: must include form-name
+    // Required by Netlify Forms
     data["form-name"] = "quote";
 
     try {
-      const res = await fetch("/", {
+      // Post to the same route as the form page (more reliable for Netlify + Next)
+      const res = await fetch("/contact", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode(data),
@@ -39,8 +39,7 @@ export default function Contact() {
       if (!res.ok) throw new Error(`Netlify forms POST failed: ${res.status}`);
 
       setStatus("success");
-      // Redirect after successful POST
-      window.location.href = "/thank-you";
+      window.location.assign("/thank-you");
     } catch (err) {
       console.error(err);
       setStatus("error");
@@ -67,6 +66,8 @@ export default function Contact() {
         <form
           name="quote"
           method="POST"
+          action="/thank-you"
+          encType="application/x-www-form-urlencoded"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
           onSubmit={handleSubmit}
