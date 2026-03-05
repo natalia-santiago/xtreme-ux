@@ -9,10 +9,25 @@ export default function Header() {
         </Link>
 
         <nav className="hidden gap-6 text-sm md:flex">
-          <Link href="/services" className="hover:text-[#c1121f]">Services</Link>
-          <Link href="/projects" className="hover:text-[#c1121f]">Projects</Link>
-          <Link href="/about" className="hover:text-[#c1121f]">About</Link>
-          <Link href="/contact" className="hover:text-[#c1121f]">Contact</Link>
+          <Link href="/services" className="hover:text-[#c1121f]">
+            Services
+          </Link>
+
+          <Link href="/projects" className="hover:text-[#c1121f]">
+            Projects
+          </Link>
+
+          <Link href="/reviews" className="hover:text-[#c1121f]">
+            Reviews
+          </Link>
+
+          <Link href="/about" className="hover:text-[#c1121f]">
+            About
+          </Link>
+
+          <Link href="/contact" className="hover:text-[#c1121f]">
+            Contact
+          </Link>
         </nav>
 
         <a
