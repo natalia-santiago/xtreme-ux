@@ -1,13 +1,26 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   return (
     <header className="bg-[#0d0d0d] text-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <Link href="/" className="text-lg font-bold tracking-wide">
-          XTREME <span className="text-[#c1121f]">CONCRETE</span>
+
+        {/* LOGO */}
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/logo.png"
+            alt="Xtreme Concrete Cutting & Demolition"
+            width={40}
+            height={40}
+            priority
+          />
+          <span className="text-lg font-bold tracking-wide">
+            XTREME <span className="text-[#c1121f]">CONCRETE</span>
+          </span>
         </Link>
 
+        {/* NAVIGATION */}
         <nav className="hidden gap-6 text-sm md:flex">
           <Link href="/services" className="hover:text-[#c1121f]">
             Services
@@ -30,12 +43,14 @@ export default function Header() {
           </Link>
         </nav>
 
+        {/* CALL BUTTON */}
         <a
           href="tel:+19194292619"
           className="rounded-md bg-[#c1121f] px-4 py-2 text-sm font-semibold hover:bg-[#8f0e16]"
         >
           Call Now
         </a>
+
       </div>
     </header>
   );
