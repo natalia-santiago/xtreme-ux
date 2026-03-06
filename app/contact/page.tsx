@@ -23,16 +23,17 @@ export default function Contact() {
         <form
           name="quote"
           method="POST"
-          action="/thank-you"
+          action="/thank-you.html"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
           className="space-y-5"
         >
           <input type="hidden" name="form-name" value="quote" />
-          <input type="hidden" name="subject" value="New Quote Request" />
+
           <p className="hidden">
             <label>
-              Don’t fill this out if you’re human: <input name="bot-field" />
+              Don&apos;t fill this out if you&apos;re human:{" "}
+              <input name="bot-field" />
             </label>
           </p>
 
