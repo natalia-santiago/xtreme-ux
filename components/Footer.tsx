@@ -3,11 +3,9 @@ import Link from "next/link";
 export default function Footer() {
   const year = new Date().getFullYear();
 
-  const GOOGLE_BUSINESS_URL = process.env.NEXT_PUBLIC_GOOGLE_BUSINESS_URL?.trim();
-
   return (
     <footer className="bg-[#0d0d0d] text-white">
-      <div className="mx-auto grid w-full max-w-6xl gap-8 px-6 py-12 md:grid-cols-4">
+      <div className="mx-auto grid w-full max-w-[1400px] gap-10 px-6 py-12 md:grid-cols-4">
         <div>
           <p className="text-lg font-bold">
             XTREME <span className="text-[#c1121f]">CONCRETE</span>
@@ -21,125 +19,79 @@ export default function Footer() {
             Goldsboro, NC • Serving Eastern North Carolina
           </p>
 
-          <div className="mt-4 flex flex-wrap gap-3">
-            <Link
-              href="/contact"
-              className="rounded-md bg-[#c1121f] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#8f0e16]"
-            >
-              Request a Quote
-            </Link>
-
-            <a
-              href="tel:+12525826094"
-              className="rounded-md border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-white/90 transition hover:bg-white/10"
-            >
-              Call Now
-            </a>
-          </div>
-
-          {GOOGLE_BUSINESS_URL ? (
-            <p className="mt-4 text-xs text-white/60">
-              <a
-                href={GOOGLE_BUSINESS_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-white hover:underline"
-              >
-                Find us on Google
+          <div className="mt-6">
+            <h3 className="text-base font-semibold">Contact</h3>
+            <p className="mt-3 text-sm text-white/75">
+              <a href="tel:+12525826094" className="hover:text-white">
+                (252) 582-6094
               </a>
             </p>
-          ) : null}
-        </div>
-
-        <div className="text-sm">
-          <p className="font-semibold">Contact</p>
-
-          <div className="mt-2 space-y-1 text-white/70">
-            <a
-              href="tel:+12525826094"
-              className="block hover:text-white hover:underline"
-            >
-              (252) 582-6094
-            </a>
-
-            <a
-              href="mailto:xtreme.concretecutting.demo@gmail.com"
-              className="block break-all sm:break-words hover:text-white hover:underline"
-            >
-              xtreme.concretecutting.demo@gmail.com
-            </a>
+            <p className="mt-2 text-sm text-white/75">
+              <a
+                href="mailto:xtreme.concretecutting.demo@gmail.com"
+                className="break-all hover:text-white"
+              >
+                xtreme.concretecutting.demo@gmail.com
+              </a>
+            </p>
+            <p className="mt-4 text-sm text-white/65">
+              ★★★★★ References available upon request
+            </p>
           </div>
-
-          <p className="mt-4 text-xs text-white/60">
-            ★★★★★ References available upon request
-          </p>
         </div>
 
-        <div className="text-sm">
-          <p className="font-semibold">Quick Links</p>
-
-          <ul className="mt-2 space-y-2 text-white/70">
+        <div>
+          <h3 className="text-base font-semibold">Quick Links</h3>
+          <ul className="mt-4 space-y-3 text-sm text-white/75">
             <li>
-              <Link href="/services" className="hover:text-white hover:underline">
+              <Link href="/services" className="hover:text-white">
                 Services
               </Link>
             </li>
             <li>
-              <Link href="/service-areas" className="hover:text-white hover:underline">
+              <Link href="/service-areas" className="hover:text-white">
                 Service Areas
               </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-white hover:underline">
+              <Link href="/about" className="hover:text-white">
                 About
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-white hover:underline">
+              <Link href="/contact" className="hover:text-white">
                 Contact
               </Link>
             </li>
           </ul>
         </div>
 
-        <div className="text-sm">
-          <p className="font-semibold">Services</p>
+        <div>
+          <h3 className="text-base font-semibold">Services</h3>
+          <ul className="mt-4 space-y-3 text-sm text-white/75">
+            <li>Core Drilling</li>
+            <li>Concrete Slab Cutting</li>
+            <li>Concrete Wall Cutting</li>
+            <li>Reinforced Wall Cutting</li>
+            <li>Building Demolition</li>
+          </ul>
+        </div>
 
-          <ul className="mt-2 space-y-2 text-white/70">
-            <li>
-              <Link href="/services#core-drilling" className="hover:text-white hover:underline">
-                Core Drilling
-              </Link>
-            </li>
-            <li>
-              <Link href="/services#slab-cutting" className="hover:text-white hover:underline">
-                Concrete Slab Cutting
-              </Link>
-            </li>
-            <li>
-              <Link href="/services#wall-cutting" className="hover:text-white hover:underline">
-                Concrete Wall Cutting
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/services#reinforced-wall-cutting"
-                className="hover:text-white hover:underline"
-              >
-                Reinforced Wall Cutting
-              </Link>
-            </li>
-            <li>
-              <Link href="/services#demolition" className="hover:text-white hover:underline">
-                Building Demolition
-              </Link>
-            </li>
+        <div>
+          <h3 className="text-base font-semibold">Hours</h3>
+          <ul className="mt-4 space-y-3 text-sm text-white/75">
+            <li>Monday - Friday: 7:00 AM - 6:00 PM</li>
+            <li>Saturday: By appointment</li>
+            <li>Sunday: Closed</li>
           </ul>
         </div>
       </div>
 
-      <div className="border-t border-white/10 py-4 text-center text-xs text-white/60">
-        © {year} Xtreme Concrete Cutting &amp; Demolition LLC
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-3 px-6 py-5 text-sm text-white/60 md:flex-row md:items-center md:justify-between">
+          <p>© {year} Xtreme Concrete Cutting &amp; Demolition. All rights reserved.</p>
+          <p>Website by Natalia Santiago</p>
+        </div>
       </div>
     </footer>
   );

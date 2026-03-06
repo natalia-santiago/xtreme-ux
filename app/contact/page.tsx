@@ -1,57 +1,13 @@
-// app/contact/page.tsx
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
 
 export default function Contact() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus("submitting");
-
-    try {
-      const form = e.currentTarget;
-      const formData = new FormData(form);
-
-      const name = String(formData.get("name") ?? "");
-      const phone = String(formData.get("phone") ?? "");
-      const email = String(formData.get("email") ?? "");
-      const location = String(formData.get("location") ?? "");
-      const dimensions = String(formData.get("dimensions") ?? "");
-      const thickness = String(formData.get("thickness") ?? "");
-      const message = String(formData.get("message") ?? "");
-
-      const smsMessage = `Hi, I'm requesting a quote from the website.
-
-Name: ${name}
-Phone: ${phone}
-Email: ${email}
-Location / Job Site: ${location}
-Dimensions: ${dimensions}
-Thickness: ${thickness}
-
-What do you need?
-${message}`;
-
-      const encodedMessage = encodeURIComponent(smsMessage);
-
-      window.location.href = `sms:+12525826094?body=${encodedMessage}`;
-      setStatus("idle");
-    } catch (err) {
-      console.error(err);
-      setStatus("error");
-    }
-  }
-
   return (
-    <section className="mx-auto max-w-3xl px-4 py-14 pb-28 sm:pb-14">
+    <section className="mx-auto max-w-3xl px-4 py-14">
       <h1 className="text-3xl font-bold">Request a Quote</h1>
 
       <p className="mt-2 text-black/70">
-        Tell us what you need and we’ll open a text message to our team. For fastest help, call or
-        text{" "}
+        Let us know what services you&apos;re looking for, and our team will
+        get back to you quickly. For immediate attention, call or text{" "}
         <a className="font-semibold text-[#c1121f]" href="tel:+12525826094">
           (252) 582-6094
         </a>
@@ -59,113 +15,140 @@ ${message}`;
       </p>
 
       <p className="mt-2 text-sm text-black/60">
-        Typical response time: <span className="font-semibold">same day or within 24 hours</span>.
+        Typical response time:{" "}
+        <span className="font-semibold">same day or within 24 hours</span>.
       </p>
 
       <div className="mt-8 rounded-2xl border border-black/10 p-6 shadow-sm">
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label className="block text-sm font-medium text-black/80">Name</label>
-              <input
-                className="mt-1 w-full rounded-xl border border-black/10 px-3 py-2 outline-none focus:ring-2 focus:ring-black/10"
-                type="text"
-                name="name"
-                required
-                autoComplete="name"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-black/80">Phone</label>
-              <input
-                className="mt-1 w-full rounded-xl border border-black/10 px-3 py-2 outline-none focus:ring-2 focus:ring-black/10"
-                type="tel"
-                name="phone"
-                required
-                autoComplete="tel"
-              />
-            </div>
-          </div>
+        <form
+          name="quote"
+          method="POST"
+          action="/thank-you"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          className="space-y-5"
+        >
+          <input type="hidden" name="form-name" value="quote" />
+          <input type="hidden" name="subject" value="New Quote Request" />
+          <p className="hidden">
+            <label>
+              Don’t fill this out if you’re human: <input name="bot-field" />
+            </label>
+          </p>
 
           <div>
-            <label className="block text-sm font-medium text-black/80">Email</label>
+            <label htmlFor="name" className="mb-2 block text-sm font-medium">
+              Name
+            </label>
             <input
-              className="mt-1 w-full rounded-xl border border-black/10 px-3 py-2 outline-none focus:ring-2 focus:ring-black/10"
-              type="email"
-              name="email"
-              autoComplete="email"
-              placeholder="Optional"
+              id="name"
+              name="name"
+              type="text"
+              required
+              className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none transition focus:border-[#c1121f]"
             />
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label className="block text-sm font-medium text-black/80">Location / Job Site</label>
-              <input
-                className="mt-1 w-full rounded-xl border border-black/10 px-3 py-2 outline-none focus:ring-2 focus:ring-black/10"
-                type="text"
-                name="location"
-                placeholder="City / address (optional)"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-black/80">Dimensions</label>
-              <input
-                className="mt-1 w-full rounded-xl border border-black/10 px-3 py-2 outline-none focus:ring-2 focus:ring-black/10"
-                type="text"
-                name="dimensions"
-                placeholder='e.g., 4" x 6"'
-              />
-            </div>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label className="block text-sm font-medium text-black/80">Thickness</label>
-              <input
-                className="mt-1 w-full rounded-xl border border-black/10 px-3 py-2 outline-none focus:ring-2 focus:ring-black/10"
-                type="text"
-                name="thickness"
-                placeholder='e.g., 6"'
-              />
-            </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-black/80">What do you need?</label>
-            <textarea
-              className="mt-1 min-h-[140px] w-full rounded-xl border border-black/10 px-3 py-2 outline-none focus:ring-2 focus:ring-black/10"
-              name="message"
+            <label htmlFor="phone" className="mb-2 block text-sm font-medium">
+              Phone
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
               required
-              placeholder="Tell us about the job…"
+              className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none transition focus:border-[#c1121f]"
             />
           </div>
 
-          {status === "error" && (
-            <p className="text-sm text-red-600">
-              Something went wrong opening your message. Please try again or call (252) 582-6094.
-            </p>
-          )}
+          <div>
+            <label htmlFor="email" className="mb-2 block text-sm font-medium">
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Optional"
+              className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none transition focus:border-[#c1121f]"
+            />
+          </div>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div>
+            <label
+              htmlFor="location"
+              className="mb-2 block text-sm font-medium"
+            >
+              Location / Job Site
+            </label>
+            <input
+              id="location"
+              name="location"
+              type="text"
+              placeholder="City / address (optional)"
+              className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none transition focus:border-[#c1121f]"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="dimensions"
+              className="mb-2 block text-sm font-medium"
+            >
+              Dimensions
+            </label>
+            <input
+              id="dimensions"
+              name="dimensions"
+              type="text"
+              placeholder='e.g., 4" x 6"'
+              className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none transition focus:border-[#c1121f]"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="thickness"
+              className="mb-2 block text-sm font-medium"
+            >
+              Thickness
+            </label>
+            <input
+              id="thickness"
+              name="thickness"
+              type="text"
+              placeholder='e.g., 6"'
+              className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none transition focus:border-[#c1121f]"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="details" className="mb-2 block text-sm font-medium">
+              What do you need?
+            </label>
+            <textarea
+              id="details"
+              name="details"
+              rows={6}
+              placeholder="Tell us about the job..."
+              required
+              className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none transition focus:border-[#c1121f]"
+            />
+          </div>
+
+          <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
             <button
               type="submit"
-              disabled={status === "submitting"}
-              className="rounded-xl bg-[#c1121f] px-5 py-2.5 font-semibold text-white shadow-sm hover:opacity-95 disabled:opacity-60"
+              className="inline-flex justify-center rounded-md bg-[#c1121f] px-6 py-3 font-semibold text-white transition hover:opacity-90"
             >
-              {status === "submitting" ? "Opening..." : "Text Request"}
+              Send
             </button>
 
-            <a
-              href="tel:+12525826094"
-              className="rounded-xl border border-black/15 bg-white px-5 py-2.5 font-semibold hover:bg-black/[0.02]"
+            <Link
+              href="/"
+              className="text-base text-black/60 underline-offset-4 hover:text-black hover:underline"
             >
-              Call Now
-            </a>
-
-            <Link className="text-sm text-black/60 hover:underline" href="/">
               Back to home
             </Link>
           </div>
