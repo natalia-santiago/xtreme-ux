@@ -3,9 +3,6 @@ import Link from "next/link";
 export default function Footer() {
   const year = new Date().getFullYear();
 
-  // Optional: show this only when you have a real Google Business Profile link.
-  // Set in Netlify env vars when ready:
-  // NEXT_PUBLIC_GOOGLE_BUSINESS_URL = https://g.page/r/....
   const GOOGLE_BUSINESS_URL = process.env.NEXT_PUBLIC_GOOGLE_BUSINESS_URL?.trim();
 
   return (
@@ -16,7 +13,9 @@ export default function Footer() {
             XTREME <span className="text-[#c1121f]">CONCRETE</span>
           </p>
 
-          <p className="mt-2 text-sm text-white/70">Concrete Cutting &amp; Demolition</p>
+          <p className="mt-2 text-sm text-white/70">
+            Concrete Cutting &amp; Demolition
+          </p>
 
           <p className="mt-1 text-sm text-white/70">
             Goldsboro, NC • Serving Eastern North Carolina
@@ -38,7 +37,6 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Only show once Google Business Profile is claimed */}
           {GOOGLE_BUSINESS_URL ? (
             <p className="mt-4 text-xs text-white/60">
               <a
@@ -57,11 +55,10 @@ export default function Footer() {
           <p className="font-semibold">Contact</p>
 
           <div className="mt-2 space-y-1 text-white/70">
-            <a href="tel:+12525826094" className="block hover:text-white hover:underline">
-              (252) 582-6094
-            </a>
-
-            <a href="tel:+12525826094" className="block hover:text-white hover:underline">
+            <a
+              href="tel:+12525826094"
+              className="block hover:text-white hover:underline"
+            >
               (252) 582-6094
             </a>
 
@@ -73,7 +70,9 @@ export default function Footer() {
             </a>
           </div>
 
-          <p className="mt-4 text-xs text-white/60">★★★★★ References available upon request</p>
+          <p className="mt-4 text-xs text-white/60">
+            ★★★★★ References available upon request
+          </p>
         </div>
 
         <div className="text-sm">
@@ -90,24 +89,11 @@ export default function Footer() {
                 Service Areas
               </Link>
             </li>
-
-            {/* These pages may not exist yet. Route to contact to avoid 404s for now. */}
             <li>
-              <Link href="/contact" className="hover:text-white hover:underline">
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-white hover:underline">
-                Reviews
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-white hover:underline">
+              <Link href="/about" className="hover:text-white hover:underline">
                 About
               </Link>
             </li>
-
             <li>
               <Link href="/contact" className="hover:text-white hover:underline">
                 Contact
@@ -136,7 +122,10 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/services#reinforced-wall-cutting" className="hover:text-white hover:underline">
+              <Link
+                href="/services#reinforced-wall-cutting"
+                className="hover:text-white hover:underline"
+              >
                 Reinforced Wall Cutting
               </Link>
             </li>

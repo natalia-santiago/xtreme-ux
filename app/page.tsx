@@ -32,6 +32,10 @@ const services = [
 ];
 
 export default function Home() {
+  const textMessage = encodeURIComponent(
+    "Hi, I'm interested in a quote for concrete cutting / demolition."
+  );
+
   return (
     <>
       {/* HERO SLIDER + TRUST STRIP + ICON STRIP */}
@@ -205,6 +209,22 @@ export default function Home() {
           </Link>
         </div>
 
+        <div className="mt-4 flex flex-wrap gap-3">
+          <a
+            href="tel:+12525826094"
+            className="rounded-md bg-[#c1121f] px-5 py-3 text-sm font-semibold text-white hover:bg-[#8f0e16]"
+          >
+            Call (252) 582-6094
+          </a>
+
+          <a
+            href={`sms:+12525826094?body=${textMessage}`}
+            className="rounded-md border border-black/15 bg-white px-5 py-3 text-sm font-semibold hover:bg-black/[0.02]"
+          >
+            Text for a Quote
+          </a>
+        </div>
+
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
           {services.map((s) => (
             <div
@@ -324,7 +344,7 @@ export default function Home() {
         <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start justify-between gap-6 px-6 py-10 lg:flex-row lg:items-center">
           <div>
             <h3 className="text-2xl font-bold">Talk to an expert today!</h3>
-            <p className="mt-2 text-white/85">Call us for quick scheduling and a clear estimate.</p>
+            <p className="mt-2 text-white/85">Call or text us for quick scheduling and a clear estimate.</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link

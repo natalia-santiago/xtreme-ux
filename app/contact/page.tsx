@@ -46,11 +46,12 @@ ${message}`;
   }
 
   return (
-    <section className="mx-auto max-w-3xl px-4 py-14">
+    <section className="mx-auto max-w-3xl px-4 py-14 pb-28 sm:pb-14">
       <h1 className="text-3xl font-bold">Request a Quote</h1>
 
       <p className="mt-2 text-black/70">
-        Tell us what you need and we’ll open a text message to our team. For fast help, call{" "}
+        Tell us what you need and we’ll open a text message to our team. For fastest help, call or
+        text{" "}
         <a className="font-semibold text-[#c1121f]" href="tel:+12525826094">
           (252) 582-6094
         </a>
@@ -148,7 +149,7 @@ ${message}`;
             </p>
           )}
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <button
               type="submit"
               disabled={status === "submitting"}
@@ -156,6 +157,13 @@ ${message}`;
             >
               {status === "submitting" ? "Opening..." : "Text Request"}
             </button>
+
+            <a
+              href="tel:+12525826094"
+              className="rounded-xl border border-black/15 bg-white px-5 py-2.5 font-semibold hover:bg-black/[0.02]"
+            >
+              Call Now
+            </a>
 
             <Link className="text-sm text-black/60 hover:underline" href="/">
               Back to home
