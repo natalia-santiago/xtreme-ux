@@ -6,12 +6,12 @@ const services = [
   {
     title: "Core Drilling",
     desc: "Precision drilling for plumbing, electrical, HVAC, and structural penetrations.",
-    img: "/images/core-drilling.jpg",
+    img: "/images/core-drilling.jpeg",
   },
   {
     title: "Concrete Slab Cutting",
     desc: "Flat sawing for floors, roads, driveways, and commercial slabs.",
-    img: "/images/slab-cutting.jpg",
+    img: "/images/slab-cutting.jpeg",
   },
   {
     title: "Concrete Wall Cutting",
@@ -21,7 +21,7 @@ const services = [
   {
     title: "Reinforced Wall Cutting",
     desc: "Specialized cutting for heavily reinforced structural concrete.",
-    img: "/images/core-drilling.jpg",
+    img: "/images/reinforced-wall-cutting.png",
   },
   {
     title: "Building Demolition",
@@ -54,7 +54,6 @@ export default function Home() {
     <>
       <HeroSlider />
 
-      {/* TRUST STRIP */}
       <section className="border-y border-black/10 bg-white">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-4 py-4 text-sm font-medium text-black/75 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-8">
           <p>Fast scheduling</p>
@@ -64,7 +63,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT */}
       <section className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div>
@@ -110,7 +108,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVICES */}
       <section className="bg-[#f7f7f7]">
         <div className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">
           <div className="max-w-3xl">
@@ -173,7 +170,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WHY CHOOSE US */}
       <section className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">
         <div className="grid gap-6 md:grid-cols-3">
           <div className="rounded-3xl border border-black/10 bg-white p-7 shadow-sm">
@@ -200,7 +196,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ */}
       <section className="bg-[#f7f7f7]">
         <div className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">
           <div className="max-w-3xl">
@@ -230,7 +225,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="bg-[#c1121f] text-white">
         <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-6">
           <div className="max-w-3xl">
