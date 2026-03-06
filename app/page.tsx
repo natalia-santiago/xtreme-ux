@@ -1,3 +1,4 @@
+// app/page.tsx
 import Image from "next/image";
 import Link from "next/link";
 import HeroSlider from "@/components/HeroSlider";
@@ -35,10 +36,10 @@ export default function Home() {
     <>
       {/* HERO SLIDER + TRUST STRIP + ICON STRIP */}
       <section className="relative w-full overflow-hidden">
-        <div className="mx-auto w-full max-w-[1400px] px-6 pt-10 md:pt-12">
+        <div className="mx-auto w-full max-w-[1400px] px-6 pt-12">
           <HeroSlider />
 
-          {/* Trust strip (local + credible) */}
+          {/* Trust strip */}
           <div className="mt-4 flex flex-wrap items-center gap-3 text-sm">
             <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-black/70">
               <span className="text-[#c1121f]">★★★★★</span>
@@ -57,9 +58,9 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Icon/category strip (unchanged) */}
+        {/* Icon/category strip */}
         <div className="relative mt-10 w-full bg-white">
-          <div className="mx-auto grid w-full max-w-[1400px] gap-3 px-6 py-6 md:grid-cols-3">
+          <div className="mx-auto grid w-full max-w-[1400px] gap-3 px-6 py-6 lg:grid-cols-3">
             {[
               {
                 title: "CORE DRILLING",
@@ -124,9 +125,7 @@ export default function Home() {
                   {item.icon}
                 </div>
                 <div>
-                  <p className="text-xs font-bold tracking-widest text-black/70">
-                    {item.title}
-                  </p>
+                  <p className="text-xs font-bold tracking-widest text-black/70">{item.title}</p>
                   <p className="text-xs text-black/60">{item.sub}</p>
                 </div>
               </div>
@@ -137,20 +136,19 @@ export default function Home() {
 
       {/* WHO WE ARE */}
       <section className="w-full bg-black/[0.03]">
-        <div className="mx-auto grid w-full max-w-[1400px] gap-8 px-6 py-14 md:grid-cols-2 md:items-center">
+        <div className="mx-auto grid w-full max-w-[1400px] gap-8 px-6 py-14 lg:grid-cols-2 lg:items-center">
           <div>
             <h2 className="text-2xl font-bold">Who we are</h2>
 
             <p className="mt-3 text-sm text-black/70">
-              Xtreme Concrete Cutting &amp; Demolition LLC is based in Goldsboro,
-              NC and serves surrounding areas across Eastern North Carolina. We
-              focus on safe methods, clean results, and clear communication from
-              quote to completion.
+              Xtreme Concrete Cutting &amp; Demolition LLC is based in Goldsboro, NC and serves
+              surrounding areas across Eastern North Carolina. We focus on safe methods, clean
+              results, and clear communication from quote to completion.
             </p>
 
             <p className="mt-3 text-sm text-black/70">
-              We’re a new company building our online portfolio — references are
-              available upon request.
+              We’re a new company building our online portfolio — references are available upon
+              request.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -170,7 +168,7 @@ export default function Home() {
           </div>
 
           <div className="relative overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
-            <div className="relative h-56 w-full md:h-72">
+            <div className="relative h-56 w-full lg:h-72">
               <Image
                 src="/images/safety.jpg"
                 alt="Safety-first jobsite"
@@ -182,8 +180,7 @@ export default function Home() {
             <div className="p-5">
               <p className="text-sm font-semibold">Safety-first work</p>
               <p className="mt-1 text-sm text-black/70">
-                Controlled cutting, tidy work areas, and jobsite awareness — every
-                job.
+                Controlled cutting, tidy work areas, and jobsite awareness — every job.
               </p>
             </div>
           </div>
@@ -192,7 +189,7 @@ export default function Home() {
 
       {/* SERVICES */}
       <section className="mx-auto w-full max-w-[1400px] px-6 py-14">
-        <div className="flex items-end justify-between gap-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
           <div>
             <h2 className="text-2xl font-bold">Services we offer</h2>
             <p className="mt-2 text-sm text-black/70">
@@ -202,13 +199,13 @@ export default function Home() {
 
           <Link
             href="/services"
-            className="hidden rounded-md border border-black/15 bg-white px-4 py-2 text-sm font-semibold hover:bg-black/[0.02] sm:inline-block"
+            className="rounded-md border border-black/15 bg-white px-4 py-2 text-sm font-semibold hover:bg-black/[0.02]"
           >
             View all services
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
+        <div className="mt-8 grid gap-6 lg:grid-cols-3">
           {services.map((s) => (
             <div
               key={s.title}
@@ -244,7 +241,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* MAP (Local trust + SEO) */}
+      {/* MAP */}
       <section className="w-full bg-white">
         <div className="mx-auto w-full max-w-[1400px] px-6 py-14">
           <h2 className="text-2xl font-bold">Our location</h2>
@@ -263,7 +260,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ (Big SEO win) */}
+      {/* FAQ */}
       <section className="w-full bg-black/[0.03]">
         <div className="mx-auto w-full max-w-[1400px] px-6 py-14">
           <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
@@ -271,7 +268,7 @@ export default function Home() {
             Quick answers to common questions about cutting, drilling, and demolition.
           </p>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
             {[
               {
                 q: "How fast can you schedule a job?",
@@ -298,10 +295,7 @@ export default function Home() {
                 a: "We’re building our online portfolio as we complete more projects — references are available upon request.",
               },
             ].map((item) => (
-              <div
-                key={item.q}
-                className="rounded-2xl border border-black/10 bg-white p-5 shadow-sm"
-              >
+              <div key={item.q} className="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
                 <p className="text-sm font-semibold">{item.q}</p>
                 <p className="mt-2 text-sm text-black/70">{item.a}</p>
               </div>
@@ -327,12 +321,10 @@ export default function Home() {
 
       {/* CTA STRIP */}
       <section className="w-full bg-[#c1121f] text-white">
-        <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start justify-between gap-6 px-6 py-10 md:flex-row md:items-center">
+        <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start justify-between gap-6 px-6 py-10 lg:flex-row lg:items-center">
           <div>
             <h3 className="text-2xl font-bold">Talk to an expert today!</h3>
-            <p className="mt-2 text-white/85">
-              Call us for quick scheduling and a clear estimate.
-            </p>
+            <p className="mt-2 text-white/85">Call us for quick scheduling and a clear estimate.</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
@@ -350,27 +342,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Sticky mobile bottom bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-black/10 bg-white/95 backdrop-blur sm:hidden">
-        <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-3 px-4 py-3">
-          <a
-            href="tel:+19194292619"
-            className="flex-1 rounded-md bg-black px-4 py-3 text-center text-sm font-semibold text-white"
-          >
-            Call Now
-          </a>
-          <Link
-            href="/contact"
-            className="flex-1 rounded-md bg-[#c1121f] px-4 py-3 text-center text-sm font-semibold text-white"
-          >
-            Get a Quote
-          </Link>
-        </div>
-      </div>
-
-      {/* Spacer so the sticky bar doesn't cover content on mobile */}
-      <div className="h-16 sm:hidden" />
     </>
   );
 }

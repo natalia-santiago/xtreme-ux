@@ -1,7 +1,7 @@
+/* app/globals.css */
 @import "tailwindcss";
 
 :root {
-
   /* Brand Colors */
   --black: #0d0d0d;
   --white: #ffffff;
@@ -9,10 +9,12 @@
   --red-dark: #8f0e16;
   --gray: #e5e5e5;
 
-  /* Site Colors */
+  /* Site Colors (LOCKED for consistency) */
   --background: #ffffff;
   --foreground: #171717;
 
+  /* Tell the browser we are a LIGHT site (prevents auto dark rendering changes) */
+  color-scheme: light;
 }
 
 @theme inline {
@@ -22,17 +24,56 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ✅ Removed prefers-color-scheme override on purpose.
+   If you want consistent visuals across devices, we should not
+   auto-switch to dark mode based on the user's phone settings. */
+
+/* Base */
+html {
+  /* Prevent iOS text auto-resizing that makes fonts/spacing look different */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  /* Prevent iOS/Chrome from "helping" with zoom on input focus */
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+
+  /* Smoother type rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Prevent horizontal "wobble" on small screens */
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Make media behave consistently */
+img,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Better tap behavior on iOS */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Avoid iOS input zoom + weird font jumps:
+   iOS zooms inputs if font-size < 16px. */
+input,
+select,
+textarea {
+  font-size: 16px;
 }
 
 /* --- Advanced Concrete-like hero texture (no image needed) --- */

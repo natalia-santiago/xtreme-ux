@@ -1,17 +1,13 @@
 // app/sitemap.ts
 import type { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://xtremeconcretecutting.com"; // update later if needed
-  const now = new Date();
+const BASE_URL = "https://xtremeconcretecutting.netlify.app";
 
-  return [
-    { url: `${baseUrl}/`, lastModified: now },
-    { url: `${baseUrl}/services`, lastModified: now },
-    { url: `${baseUrl}/service-areas`, lastModified: now },
-    { url: `${baseUrl}/projects`, lastModified: now },
-    { url: `${baseUrl}/reviews`, lastModified: now },
-    { url: `${baseUrl}/about`, lastModified: now },
-    { url: `${baseUrl}/contact`, lastModified: now },
-  ];
+export default function sitemap(): MetadataRoute.Sitemap {
+  const routes = ["", "/services", "/service-areas", "/projects", "/reviews", "/contact"];
+
+  return routes.map((path) => ({
+    url: `${BASE_URL}${path}`,
+    lastModified: new Date(),
+  }));
 }

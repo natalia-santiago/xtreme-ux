@@ -3,7 +3,16 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const SITE_URL = "https://xtremeconcretecutting.com"; // update later if needed
+// Use an env var for the canonical/base URL so previews + SEO stay correct
+// on Netlify during staging and after you connect the real domain.
+//
+// In Netlify > Site settings > Environment variables, set:
+// NEXT_PUBLIC_SITE_URL = https://xtremeconcretecutting.com
+//
+// Until then, it will safely fall back to the current Netlify URL.
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ||
+  "https://xtremeconcretecutting.netlify.app";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -39,7 +48,6 @@ export const metadata = {
     icon: "/favicon.ico",
   },
 
-  // Optional but recommended for a real business site
   robots: {
     index: true,
     follow: true,
@@ -59,7 +67,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.jpg", // becomes absolute using metadataBase
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Xtreme Concrete Cutting & Demolition",
@@ -77,15 +85,17 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const localBusinessSchema = {
+  // Avoid shipping a "demo" email into structured data by default.
+  // Set NEXT_PUBLIC_BUSINESS_EMAIL in Netlify when ready (or remove email entirely).
+  const BUSINESS_EMAIL = process.env.NEXT_PUBLIC_BUSINESS_EMAIL?.trim();
+
+  const localBusinessSchema: Record<string, any> = {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
     name: "Xtreme Concrete Cutting & Demolition LLC",
     url: SITE_URL,
     telephone: "+1-919-429-2619",
-    email: "xtreme.concretecutting.demo@gmail.com",
 
-    // Optional: helps Google understand what you do (safe to include)
     description:
       "Concrete cutting, core drilling, slab cutting, wall cutting, reinforced concrete cutting, and demolition services in Goldsboro, NC and Eastern North Carolina.",
 
@@ -124,6 +134,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     ],
   };
 
+  if (BUSINESS_EMAIL) {
+    localBusinessSchema.email = BUSINESS_EMAIL;
+  }
+
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -138,7 +152,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-white text-[#0d0d0d]">
+      <body className="min-h-screen overflow-x-hidden bg-white text-[#0d0d0d]">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
