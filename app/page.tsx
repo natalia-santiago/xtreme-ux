@@ -30,6 +30,21 @@ const services = [
   },
 ];
 
+const workPhotos = [
+  {
+    src: "/images/core-drilling-action.jpeg",
+    alt: "Concrete core drilling in action",
+  },
+  {
+    src: "/images/demolition.jpg",
+    alt: "Concrete demolition project",
+  },
+  {
+    src: "/images/slab-cutting.jpeg",
+    alt: "Concrete slab cutting work",
+  },
+];
+
 const faqs = [
   {
     q: "What areas do you serve?",
@@ -54,6 +69,7 @@ export default function Home() {
     <>
       <HeroSlider />
 
+      {/* TRUST BAR */}
       <section className="border-y border-black/10 bg-white">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-4 py-4 text-sm font-medium text-black/75 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-8">
           <p>Fast scheduling</p>
@@ -63,6 +79,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ABOUT */}
       <section className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div>
@@ -99,15 +116,17 @@ export default function Home() {
           <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
             <Image
               src="/images/demolition.jpg"
-              alt="Concrete demolition work"
+              alt="Concrete demolition project"
               width={1200}
               height={900}
               className="h-[320px] w-full object-cover md:h-[420px]"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         </div>
       </section>
 
+      {/* SERVICES */}
       <section className="bg-[#f7f7f7]">
         <div className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">
           <div className="max-w-3xl">
@@ -133,7 +152,7 @@ export default function Home() {
             {services.map((service) => (
               <article
                 key={service.title}
-                className="overflow-hidden rounded-[28px] border border-black/10 bg-white shadow-sm"
+                className="overflow-hidden rounded-[28px] border border-black/10 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="relative h-64 w-full">
                   <Image
@@ -141,6 +160,7 @@ export default function Home() {
                     alt={service.title}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                   />
                 </div>
 
@@ -170,66 +190,79 @@ export default function Home() {
         </div>
       </section>
 
+      {/* EQUIPMENT */}
       <section className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">
-        <div className="grid gap-8 lg:grid-cols-2 lg:items-stretch">
-          <div className="overflow-hidden rounded-3xl border border-black/10 bg-gradient-to-b from-[#fafafa] to-white shadow-sm">
-            <div className="flex h-[520px] items-end justify-center p-6 md:h-[620px]">
+        <div className="grid items-start gap-10 lg:grid-cols-2">
+          <div className="flex flex-col gap-6">
+            <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
               <Image
                 src="/images/core-drilling-rig.png"
-                alt="Professional core drilling equipment"
+                alt="Professional core drilling machine"
                 width={1200}
-                height={1600}
-                className="h-full w-full object-contain object-bottom"
+                height={900}
+                className="w-full object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+
+            <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
+              <Image
+                src="/images/core-drilling-action.jpeg"
+                alt="Concrete core drilling in action"
+                width={1200}
+                height={900}
+                className="w-full object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </div>
 
-          <div className="flex flex-col gap-8">
-            <div className="rounded-3xl border border-black/10 bg-white p-8 shadow-sm md:p-10">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c1121f]">
-                Professional equipment
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c1121f]">
+              Professional equipment
+            </p>
+
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-black md:text-4xl">
+              The right equipment for clean, precise results
+            </h2>
+
+            <p className="mt-4 max-w-2xl text-base leading-7 text-black/75">
+              We use professional-grade equipment to deliver accurate core
+              drilling and concrete cutting work with efficiency, safety, and
+              attention to detail.
+            </p>
+
+            <p className="mt-4 max-w-2xl text-base leading-7 text-black/75">
+              The right tools help us complete each project with cleaner cuts,
+              better control, and dependable results for residential,
+              commercial, and industrial jobs.
+            </p>
+
+            <div className="mt-6 rounded-2xl border border-black/10 bg-[#f7f7f7] p-5">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#c1121f]">
+                Why it matters
               </p>
-
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-black md:text-4xl">
-                The right equipment for clean, precise results
-              </h2>
-
-              <p className="mt-4 text-base leading-7 text-black/75">
-                We use professional-grade equipment to deliver accurate core
-                drilling and concrete cutting work with efficiency, safety, and
-                attention to detail.
+              <p className="mt-3 text-base leading-7 text-black/70">
+                Professional equipment helps us work with greater precision,
+                cleaner finishes, and better efficiency on a wide range of
+                residential and commercial projects.
               </p>
-
-              <p className="mt-4 text-base leading-7 text-black/75">
-                The right tools help us complete each project with cleaner cuts,
-                better control, and dependable results for residential,
-                commercial, and industrial jobs.
-              </p>
-            </div>
-
-            <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-xl lg:-mt-20 lg:ml-12">
-              <Image
-                src="/images/core-drilling-action.jpeg"
-                alt="Core drilling machine cutting through concrete"
-                width={1200}
-                height={900}
-                className="h-[260px] w-full object-cover object-center md:h-[320px]"
-              />
             </div>
           </div>
         </div>
       </section>
 
+      {/* FEATURES */}
       <section className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">
         <div className="grid gap-6 md:grid-cols-3">
-          <div className="rounded-3xl border border-black/10 bg-white p-7 shadow-sm">
+          <div className="rounded-3xl border border-black/10 bg-white p-7 shadow-sm transition duration-300 hover:shadow-md">
             <h3 className="text-2xl font-bold text-black">Fast response</h3>
             <p className="mt-3 text-base leading-7 text-black/70">
               We work to respond quickly and help keep your project moving.
             </p>
           </div>
 
-          <div className="rounded-3xl border border-black/10 bg-white p-7 shadow-sm">
+          <div className="rounded-3xl border border-black/10 bg-white p-7 shadow-sm transition duration-300 hover:shadow-md">
             <h3 className="text-2xl font-bold text-black">Clean cuts</h3>
             <p className="mt-3 text-base leading-7 text-black/70">
               Our work is focused on precision, efficiency, and dependable
@@ -237,7 +270,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="rounded-3xl border border-black/10 bg-white p-7 shadow-sm">
+          <div className="rounded-3xl border border-black/10 bg-white p-7 shadow-sm transition duration-300 hover:shadow-md">
             <h3 className="text-2xl font-bold text-black">Safety-first work</h3>
             <p className="mt-3 text-base leading-7 text-black/70">
               Safety and job-site awareness are a priority on every project.
@@ -246,12 +279,53 @@ export default function Home() {
         </div>
       </section>
 
+      {/* OUR WORK */}
       <section className="bg-[#f7f7f7]">
+        <div className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c1121f]">
+              Our work
+            </p>
+
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-black md:text-4xl">
+              Real project photos
+            </h2>
+
+            <p className="mt-4 text-base leading-7 text-black/70">
+              A look at the type of concrete cutting and demolition work we
+              handle with safety, precision, and dependable service.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {workPhotos.map((photo) => (
+              <div
+                key={photo.src}
+                className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm transition duration-300 hover:shadow-lg"
+              >
+                <div className="relative h-72 w-full">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-white">
         <div className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">
           <div className="max-w-3xl">
             <h2 className="text-3xl font-bold tracking-tight text-black md:text-4xl">
               Frequently asked questions
             </h2>
+
             <p className="mt-4 text-base leading-7 text-black/70">
               Common questions about our services, scheduling, and service area.
             </p>
@@ -261,11 +335,12 @@ export default function Home() {
             {faqs.map((item) => (
               <div
                 key={item.q}
-                className="rounded-3xl border border-black/10 bg-white p-7 shadow-sm"
+                className="rounded-3xl border border-black/10 bg-[#f7f7f7] p-7 shadow-sm"
               >
                 <h3 className="text-2xl font-bold tracking-tight text-black">
                   {item.q}
                 </h3>
+
                 <p className="mt-4 text-base leading-8 text-black/70">
                   {item.a}
                 </p>
@@ -275,6 +350,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CTA */}
       <section className="bg-[#c1121f] text-white">
         <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-6">
           <div className="max-w-3xl">
