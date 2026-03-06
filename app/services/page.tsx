@@ -139,10 +139,10 @@ export default function Services() {
             </Link>
 
             <a
-              href="tel:+19194292619"
+              href="tel:+12525826094"
               className="rounded-md border border-white/30 px-6 py-3 text-sm font-semibold"
             >
-              Call (919) 429-2619
+              Call (252) 582-6094
             </a>
           </div>
 

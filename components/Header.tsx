@@ -49,8 +49,8 @@ export default function Header() {
             <span>Serving Eastern NC</span>
             <span className="opacity-80">•</span>
 
-            <a href="tel:+19194292619" className="hover:underline">
-              (919) 429-2619
+            <a href="tel:+12525826094" className="hover:underline">
+              (252) 582-6094
             </a>
 
             <span className="opacity-80">•</span>
@@ -96,7 +96,7 @@ export default function Header() {
           {/* DESKTOP BUTTONS */}
           <div className="hidden items-center gap-2 sm:flex">
             <a
-              href="tel:+19194292619"
+              href="tel:+12525826094"
               className="rounded-xl bg-black px-4 py-2 text-sm font-semibold text-white hover:opacity-90"
             >
               Call
@@ -147,7 +147,7 @@ export default function Header() {
 
               <div className="grid grid-cols-2 gap-2 pt-2">
                 <a
-                  href="tel:+19194292619"
+                  href="tel:+12525826094"
                   className="rounded-xl bg-black px-4 py-2 text-center text-sm font-semibold text-white"
                 >
                   Call

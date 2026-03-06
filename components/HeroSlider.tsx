@@ -25,7 +25,7 @@ export default function HeroSlider() {
         subtitle:
           "Selective demo, removal, and site prep with clear communication and professional execution.",
         primaryCta: { label: "Request a Quote", href: "/contact" },
-        secondaryCta: { label: "Call (919) 429-2619", href: "tel:+19194292619" },
+        secondaryCta: { label: "Call (252) 582-6094", href: "tel:+12525826094" },
       },
       {
         src: "/hero/slide-2.png",

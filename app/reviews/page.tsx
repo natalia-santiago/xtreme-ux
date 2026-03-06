@@ -35,10 +35,10 @@ export default function ReviewsPage() {
             </Link>
 
             <a
-              href="tel:+19194292619"
+              href="tel:+12525826094"
               className="rounded-md border border-white/25 px-6 py-3 text-center text-sm font-semibold text-white hover:border-[#c1121f] hover:text-[#c1121f]"
             >
-              Call (919) 429-2619
+              Call (252) 582-6094
             </a>
           </div>
         </div>
@@ -112,10 +112,10 @@ export default function ReviewsPage() {
               </Link>
 
               <a
-                href="tel:+19194292619"
+                href="tel:+12525826094"
                 className="rounded-md border border-black/15 bg-white px-6 py-3 text-center text-sm font-semibold hover:bg-black/[0.02]"
               >
-                Call (919) 429-2619
+                Call (252) 582-6094
               </a>
             </div>
           </section>
@@ -139,10 +139,10 @@ export default function ReviewsPage() {
             </Link>
 
             <a
-              href="tel:+19194292619"
+              href="tel:+12525826094"
               className="rounded-md border border-white/30 px-6 py-3 text-sm font-semibold"
             >
-              Or call: (919) 429-2619
+              Or call: (252) 582-6094
             </a>
           </div>
         </div>

@@ -4,43 +4,41 @@
 import Link from "next/link";
 import { useState } from "react";
 
-function encode(data: Record<string, string>) {
-  return Object.keys(data)
-    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key] ?? "")}`)
-    .join("&");
-}
-
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    const data: Record<string, string> = {};
-    formData.forEach((value, key) => {
-      data[key] = String(value);
-    });
-
-    // Netlify requires this
-    data["form-name"] = "quote";
-
     try {
-      // IMPORTANT:
-      // Post to the STATIC file in /public so it's not handled by a Next.js route.
-      const res = await fetch("/netlify-forms.html", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode(data),
-      });
+      const form = e.currentTarget;
+      const formData = new FormData(form);
 
-      if (!res.ok) throw new Error(`Netlify forms POST failed: ${res.status}`);
+      const name = String(formData.get("name") ?? "");
+      const phone = String(formData.get("phone") ?? "");
+      const email = String(formData.get("email") ?? "");
+      const location = String(formData.get("location") ?? "");
+      const dimensions = String(formData.get("dimensions") ?? "");
+      const thickness = String(formData.get("thickness") ?? "");
+      const message = String(formData.get("message") ?? "");
 
-      // Redirect after successful POST
-      window.location.assign("/thank-you");
+      const smsMessage = `Hi, I'm requesting a quote from the website.
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Location / Job Site: ${location}
+Dimensions: ${dimensions}
+Thickness: ${thickness}
+
+What do you need?
+${message}`;
+
+      const encodedMessage = encodeURIComponent(smsMessage);
+
+      window.location.href = `sms:+12525826094?body=${encodedMessage}`;
+      setStatus("idle");
     } catch (err) {
       console.error(err);
       setStatus("error");
@@ -52,9 +50,9 @@ export default function Contact() {
       <h1 className="text-3xl font-bold">Request a Quote</h1>
 
       <p className="mt-2 text-black/70">
-        Tell us what you need and we’ll get back to you. For fast help, call{" "}
-        <a className="font-semibold text-[#c1121f]" href="tel:+19194292619">
-          (919) 429-2619
+        Tell us what you need and we’ll open a text message to our team. For fast help, call{" "}
+        <a className="font-semibold text-[#c1121f]" href="tel:+12525826094">
+          (252) 582-6094
         </a>
         .
       </p>
@@ -64,26 +62,7 @@ export default function Contact() {
       </p>
 
       <div className="mt-8 rounded-2xl border border-black/10 p-6 shadow-sm">
-        <form
-          name="quote"
-          method="POST"
-          action="/netlify-forms.html"
-          encType="application/x-www-form-urlencoded"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          onSubmit={handleSubmit}
-          className="space-y-4"
-        >
-          {/* Required for Netlify */}
-          <input type="hidden" name="form-name" value="quote" />
-
-          {/* Honeypot */}
-          <div className="hidden">
-            <label>
-              Don’t fill this out if you’re human: <input name="bot-field" />
-            </label>
-          </div>
-
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="block text-sm font-medium text-black/80">Name</label>
@@ -114,8 +93,8 @@ export default function Contact() {
               className="mt-1 w-full rounded-xl border border-black/10 px-3 py-2 outline-none focus:ring-2 focus:ring-black/10"
               type="email"
               name="email"
-              required
               autoComplete="email"
+              placeholder="Optional"
             />
           </div>
 
@@ -165,7 +144,7 @@ export default function Contact() {
 
           {status === "error" && (
             <p className="text-sm text-red-600">
-              Something went wrong sending your request. Please try again or call (919) 429-2619.
+              Something went wrong opening your message. Please try again or call (252) 582-6094.
             </p>
           )}
 
@@ -175,7 +154,7 @@ export default function Contact() {
               disabled={status === "submitting"}
               className="rounded-xl bg-[#c1121f] px-5 py-2.5 font-semibold text-white shadow-sm hover:opacity-95 disabled:opacity-60"
             >
-              {status === "submitting" ? "Sending..." : "Send Request"}
+              {status === "submitting" ? "Opening..." : "Text Request"}
             </button>
 
             <Link className="text-sm text-black/60 hover:underline" href="/">

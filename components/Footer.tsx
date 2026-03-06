@@ -31,7 +31,7 @@ export default function Footer() {
             </Link>
 
             <a
-              href="tel:+19194292619"
+              href="tel:+12525826094"
               className="rounded-md border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-white/90 transition hover:bg-white/10"
             >
               Call Now
@@ -57,12 +57,12 @@ export default function Footer() {
           <p className="font-semibold">Contact</p>
 
           <div className="mt-2 space-y-1 text-white/70">
-            <a href="tel:+19194292619" className="block hover:text-white hover:underline">
-              (919) 429-2619
+            <a href="tel:+12525826094" className="block hover:text-white hover:underline">
+              (252) 582-6094
             </a>
 
-            <a href="tel:+19197444460" className="block hover:text-white hover:underline">
-              (919) 744-4460
+            <a href="tel:+12525826094" className="block hover:text-white hover:underline">
+              (252) 582-6094
             </a>
 
             <a

@@ -7,7 +7,7 @@ const services = [
   {
     title: "Core Drilling",
     desc: "Precision drilling for plumbing, electrical, HVAC, and structural penetrations.",
-    img: "/images/core-drilling.jpg",
+    img: "/images/core-drilling.jpeg",
   },
   {
     title: "Concrete Slab Cutting",
@@ -22,7 +22,7 @@ const services = [
   {
     title: "Reinforced Wall Cutting",
     desc: "Specialized cutting for heavily reinforced structural concrete.",
-    img: "/images/core-drilling.jpg",
+    img: "/images/reinforced-wall-cutting.png",
   },
   {
     title: "Building Demolition",
@@ -310,10 +310,10 @@ export default function Home() {
               Request a Quote
             </Link>
             <a
-              href="tel:+19194292619"
+              href="tel:+12525826094"
               className="rounded-md border border-black/15 bg-white px-6 py-3 text-sm font-semibold hover:bg-black/[0.02]"
             >
-              Call (919) 429-2619
+              Call (252) 582-6094
             </a>
           </div>
         </div>
@@ -334,10 +334,10 @@ export default function Home() {
               Contact Us
             </Link>
             <a
-              href="tel:+19194292619"
+              href="tel:+12525826094"
               className="rounded-md border border-white/30 px-6 py-3 text-sm font-semibold"
             >
-              Or call: (919) 429-2619
+              Or call: (252) 582-6094
             </a>
           </div>
         </div>

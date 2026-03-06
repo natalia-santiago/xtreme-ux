@@ -95,7 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
     name: "Xtreme Concrete Cutting & Demolition LLC",
     url: SITE_URL,
-    telephone: "+1-919-429-2619",
+    telephone: "+1-252-582-6094",
 
     description:
       "Concrete cutting, core drilling, slab cutting, wall cutting, reinforced concrete cutting, and demolition services in Goldsboro, NC and Eastern North Carolina.",
