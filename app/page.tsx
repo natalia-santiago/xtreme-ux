@@ -287,45 +287,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* OUR WORK */}
-      <section className="bg-[#f7f7f7]">
-        <div className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c1121f]">
-              Our work
-            </p>
-
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-black md:text-4xl">
-              Real project photos
-            </h2>
-
-            <p className="mt-4 text-base leading-7 text-black/70">
-              A look at the type of concrete cutting and demolition work we
-              handle with safety, precision, and dependable service.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {workPhotos.map((photo) => (
-              <div
-                key={photo.src}
-                className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm transition duration-300 hover:shadow-lg"
-              >
-                <div className="relative h-72 w-full">
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
       <section className="bg-white">
         <div className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">
