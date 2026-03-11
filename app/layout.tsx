@@ -20,7 +20,8 @@ export const metadata = {
   },
 
   title: {
-    default: "Concrete Cutting & Demolition in Goldsboro, NC | Xtreme Concrete Cutting",
+    default:
+      "Concrete Cutting & Demolition in Goldsboro, NC | Xtreme Concrete Cutting",
     template: "%s | Xtreme Concrete Cutting",
   },
 
@@ -92,7 +93,11 @@ export default function RootLayout({
 }) {
   const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "HomeAndConstructionBusiness", "ProfessionalService"],
+    "@type": [
+      "LocalBusiness",
+      "HomeAndConstructionBusiness",
+      "ProfessionalService",
+    ],
     name: BUSINESS_NAME,
     url: SITE_URL,
     telephone: BUSINESS_PHONE,
@@ -190,6 +195,45 @@ export default function RootLayout({
     sameAs: [GBP_URL],
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What areas do you serve?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We are based in Goldsboro, NC and serve Eastern North Carolina including Raleigh, Wilson, Kinston, Smithfield, Selma, and surrounding areas.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What types of jobs do you take on?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We handle residential, commercial, and industrial concrete cutting and demolition projects.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you keep the job site clean?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We prioritize safety and keep the work area as clean and controlled as possible throughout the job.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where can I find your business on Google?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "You can view our Google Business Profile for reviews, company details, and contact information directly from our website.",
+        },
+      },
+    ],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen overflow-x-hidden bg-white text-[#0d0d0d]">
@@ -217,6 +261,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
 
         <Header />
