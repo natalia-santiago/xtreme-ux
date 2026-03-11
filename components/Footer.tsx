@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+const GBP_URL = "https://share.google/w4xRGpqyikqr5mvJ9";
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -21,22 +23,32 @@ export default function Footer() {
 
           <div className="mt-6">
             <h3 className="text-base font-semibold">Contact</h3>
+
             <p className="mt-3 text-sm text-white/75">
               <a href="tel:+12525826094" className="hover:text-white">
                 (252) 582-6094
               </a>
             </p>
+
             <p className="mt-2 text-sm text-white/75">
               <a
-                href="mailto:xtreme.concretecutting.demo@gmail.com"
+                href="mailto:info@xtremeconcretecutting.com"
                 className="break-all hover:text-white"
               >
-                xtreme.concretecutting.demo@gmail.com
+                info@xtremeconcretecutting.com
               </a>
             </p>
-            <p className="mt-4 text-sm text-white/65">
-              ★★★★★ References available upon request
-            </p>
+
+            <div className="mt-4 flex flex-col gap-3">
+              <a
+                href={GBP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-fit rounded-md border border-white/15 px-4 py-2 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+              >
+                View Google Reviews
+              </a>
+            </div>
           </div>
         </div>
 

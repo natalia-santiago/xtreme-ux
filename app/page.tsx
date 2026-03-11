@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import HeroSlider from "@/components/HeroSlider";
 
+const GBP_URL = "https://share.google/w4xRGpqyikqr5mvJ9";
+
 const services = [
   {
     title: "Core Drilling",
@@ -30,25 +32,10 @@ const services = [
   },
 ];
 
-const workPhotos = [
-  {
-    src: "/images/core-drilling-action.jpeg",
-    alt: "Concrete core drilling in action",
-  },
-  {
-    src: "/images/demolition.jpg",
-    alt: "Concrete demolition project",
-  },
-  {
-    src: "/images/slab-cutting.jpeg",
-    alt: "Concrete slab cutting work",
-  },
-];
-
 const faqs = [
   {
     q: "What areas do you serve?",
-    a: "We’re based in Goldsboro, NC and serve Eastern North Carolina for concrete cutting and demolition work.",
+    a: "We’re based in Goldsboro, NC and serve Eastern North Carolina, including Raleigh, Wilson, Kinston, Smithfield, Selma, and surrounding areas.",
   },
   {
     q: "What types of jobs do you take on?",
@@ -59,8 +46,8 @@ const faqs = [
     a: "We prioritize safety and keep the work area as clean and controlled as possible throughout the job.",
   },
   {
-    q: "Do you have reviews yet?",
-    a: "We’re building our online portfolio as we complete more projects — references are available upon request.",
+    q: "Where can I find your business on Google?",
+    a: "You can view our Google Business Profile for reviews, company details, and contact information directly from our website.",
   },
 ];
 
@@ -93,13 +80,22 @@ export default function Home() {
               from start to finish.
             </p>
 
-            <div className="mt-6">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/about"
                 className="inline-flex rounded-md bg-[#c1121f] px-5 py-3 font-semibold text-white transition hover:opacity-90"
               >
                 Learn more about us
               </Link>
+
+              <a
+                href={GBP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex rounded-md border border-black/15 px-5 py-3 font-semibold text-black transition hover:border-black/30 hover:bg-black/[0.02]"
+              >
+                View Google Reviews
+              </a>
             </div>
           </div>
 
@@ -182,73 +178,136 @@ export default function Home() {
 
       {/* EQUIPMENT */}
       <section className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">
-  <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+          <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
+            <Image
+              src="/images/core-drilling-rig.png"
+              alt="Professional core drilling machine"
+              width={1200}
+              height={900}
+              className="w-full object-cover object-center"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
 
-    {/* LEFT COLUMN IMAGE */}
-    <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
-      <Image
-        src="/images/core-drilling-rig.png"
-        alt="Professional core drilling machine"
-        width={1200}
-        height={900}
-        className="w-full object-cover object-center"
-        sizes="(max-width: 768px) 100vw, 50vw"
-      />
-    </div>
+          <div className="flex flex-col gap-6">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c1121f]">
+                Professional equipment
+              </p>
 
-    {/* RIGHT COLUMN */}
-    <div className="flex flex-col gap-6">
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-black md:text-4xl">
+                The right equipment for clean, precise results
+              </h2>
 
-      <div>
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c1121f]">
-          Professional equipment
-        </p>
+              <p className="mt-4 text-base leading-7 text-black/75">
+                We use professional-grade equipment to deliver accurate core drilling
+                and concrete cutting work with efficiency, safety, and attention to
+                detail.
+              </p>
 
-        <h2 className="mt-3 text-3xl font-bold tracking-tight text-black md:text-4xl">
-          The right equipment for clean, precise results
-        </h2>
+              <p className="mt-4 text-base leading-7 text-black/75">
+                The right tools help us complete each project with cleaner cuts,
+                better control, and dependable results for residential, commercial,
+                and industrial jobs.
+              </p>
 
-        <p className="mt-4 text-base leading-7 text-black/75">
-          We use professional-grade equipment to deliver accurate core drilling
-          and concrete cutting work with efficiency, safety, and attention to
-          detail.
-        </p>
+              <div className="mt-6 rounded-2xl border border-black/10 bg-[#f7f7f7] p-5">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#c1121f]">
+                  Why it matters
+                </p>
 
-        <p className="mt-4 text-base leading-7 text-black/75">
-          The right tools help us complete each project with cleaner cuts,
-          better control, and dependable results for residential, commercial,
-          and industrial jobs.
-        </p>
+                <p className="mt-3 text-base leading-7 text-black/70">
+                  Professional equipment helps us work with greater precision,
+                  cleaner finishes, and better efficiency on a wide range of
+                  residential and commercial projects.
+                </p>
+              </div>
+            </div>
 
-        {/* WHY IT MATTERS */}
-        <div className="mt-6 rounded-2xl border border-black/10 bg-[#f7f7f7] p-5">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#c1121f]">
-            Why it matters
-          </p>
-
-          <p className="mt-3 text-base leading-7 text-black/70">
-            Professional equipment helps us work with greater precision,
-            cleaner finishes, and better efficiency on a wide range of
-            residential and commercial projects.
-          </p>
+            <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
+              <Image
+                src="/images/core-drilling-action.jpeg"
+                alt="Concrete core drilling in action"
+                width={1200}
+                height={900}
+                className="w-full object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* ACTION IMAGE */}
-      <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
-        <Image
-          src="/images/core-drilling-action.jpeg"
-          alt="Concrete core drilling in action"
-          width={1200}
-          height={900}
-          className="w-full object-cover object-center"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
-      </div>
+      {/* GOOGLE BUSINESS / TRUST */}
+      <section className="bg-[#f7f7f7]">
+        <div className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c1121f]">
+                Trusted local service
+              </p>
 
-    </div>
-  </div>
-</section>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-black md:text-4xl">
+                Find us on Google
+              </h2>
+
+              <p className="mt-4 max-w-2xl text-base leading-7 text-black/70">
+                View our Google Business Profile for business details, reviews,
+                and quick contact options. We serve Goldsboro and surrounding
+                areas throughout Eastern North Carolina.
+              </p>
+
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href={GBP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex rounded-md bg-[#c1121f] px-5 py-3 font-semibold text-white transition hover:opacity-90"
+                >
+                  View Google Business Profile
+                </a>
+
+                <Link
+                  href="/contact"
+                  className="inline-flex rounded-md border border-black/15 px-5 py-3 font-semibold text-black transition hover:border-black/30 hover:bg-black/[0.02]"
+                >
+                  Request a Quote
+                </Link>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-black/10 bg-white p-7 shadow-sm">
+              <h3 className="text-2xl font-bold text-black">Service area</h3>
+
+              <p className="mt-4 text-base leading-7 text-black/70">
+                Based in Goldsboro, NC and serving Eastern North Carolina,
+                including Raleigh, Wilson, Kinston, Smithfield, Selma, and
+                nearby communities.
+              </p>
+
+              <div className="mt-6 grid grid-cols-2 gap-3 text-sm text-black/75">
+                <div className="rounded-2xl bg-[#f7f7f7] px-4 py-3">Goldsboro</div>
+                <div className="rounded-2xl bg-[#f7f7f7] px-4 py-3">Raleigh</div>
+                <div className="rounded-2xl bg-[#f7f7f7] px-4 py-3">Wilson</div>
+                <div className="rounded-2xl bg-[#f7f7f7] px-4 py-3">Kinston</div>
+                <div className="rounded-2xl bg-[#f7f7f7] px-4 py-3">Smithfield</div>
+                <div className="rounded-2xl bg-[#f7f7f7] px-4 py-3">Selma</div>
+              </div>
+
+              <p className="mt-6 text-sm leading-6 text-black/65">
+                Email:{" "}
+                <a
+                  href="mailto:info@xtremeconcretecutting.com"
+                  className="font-semibold text-black hover:text-[#c1121f]"
+                >
+                  info@xtremeconcretecutting.com
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* FEATURES */}
       <section className="mx-auto max-w-[1400px] px-4 py-14 md:px-6">

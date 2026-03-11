@@ -1,19 +1,18 @@
-// app/layout.tsx
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileStickyBar from "@/components/MobileStickyBar";
+import Script from "next/script";
 
-// Use an env var for the canonical/base URL so previews + SEO stay correct
-// on Netlify during staging and after you connect the real domain.
-//
-// In Netlify > Site settings > Environment variables, set:
-// NEXT_PUBLIC_SITE_URL = https://xtremeconcretecutting.com
-//
-// Until then, it will safely fall back to the current Netlify URL.
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ||
   "https://xtremeconcretecutting.netlify.app";
+
+const BUSINESS_NAME = "Xtreme Concrete Cutting & Demolition LLC";
+const BUSINESS_PHONE = "+1-252-582-6094";
+const BUSINESS_EMAIL = "info@xtremeconcretecutting.com";
+const GBP_URL = "https://share.google/w4xRGpqyikqr5mvJ9";
+const GA_ID = "G-QBT6H2SE8R";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -23,12 +22,12 @@ export const metadata = {
   },
 
   title: {
-    default: "Xtreme Concrete Cutting & Demolition | Goldsboro, NC",
+    default: "Concrete Cutting & Demolition in Goldsboro, NC | Xtreme Concrete Cutting",
     template: "%s | Xtreme Concrete Cutting",
   },
 
   description:
-    "Concrete cutting, core drilling, slab cutting, wall cutting, reinforced concrete cutting, and demolition services in Goldsboro, NC and Eastern North Carolina. Fast response, safety-first work, and clean accurate cuts.",
+    "Concrete cutting, core drilling, slab cutting, wall cutting, reinforced concrete cutting, and demolition services in Goldsboro, Raleigh, Wilson, Kinston, Smithfield, Selma, and Eastern North Carolina.",
 
   keywords: [
     "concrete cutting Goldsboro NC",
@@ -38,11 +37,14 @@ export const metadata = {
     "wall cutting Goldsboro NC",
     "reinforced concrete cutting NC",
     "concrete cutting Eastern North Carolina",
-    "Wayne County concrete cutting",
-    "Wilson NC concrete cutting",
-    "Kinston NC concrete cutting",
-    "Smithfield NC concrete cutting",
-    "Selma NC concrete cutting",
+    "concrete cutting Raleigh NC",
+    "concrete cutting Wilson NC",
+    "concrete cutting Kinston NC",
+    "concrete cutting Smithfield NC",
+    "concrete cutting Selma NC",
+    "demolition contractor Goldsboro NC",
+    "concrete contractor Eastern NC",
+    "core drilling Eastern NC",
   ],
 
   icons: {
@@ -61,7 +63,7 @@ export const metadata = {
   openGraph: {
     title: "Xtreme Concrete Cutting & Demolition",
     description:
-      "Concrete cutting, core drilling, and demolition services in Goldsboro, NC and surrounding areas.",
+      "Concrete cutting, core drilling, slab cutting, wall cutting, reinforced concrete cutting, and demolition services across Goldsboro and Eastern North Carolina.",
     url: SITE_URL,
     siteName: "Xtreme Concrete Cutting",
     locale: "en_US",
@@ -80,64 +82,93 @@ export const metadata = {
     card: "summary_large_image",
     title: "Xtreme Concrete Cutting & Demolition",
     description:
-      "Concrete cutting, core drilling, and demolition services in Goldsboro, NC and surrounding areas.",
+      "Concrete cutting, core drilling, and demolition services in Goldsboro, Raleigh, and Eastern North Carolina.",
     images: ["/og-image.jpg"],
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // Avoid shipping a "demo" email into structured data by default.
-  // Set NEXT_PUBLIC_BUSINESS_EMAIL in Netlify when ready (or remove email entirely).
-  const BUSINESS_EMAIL = process.env.NEXT_PUBLIC_BUSINESS_EMAIL?.trim();
-
-  const localBusinessSchema: Record<string, any> = {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-    name: "Xtreme Concrete Cutting & Demolition LLC",
+    "@type": ["LocalBusiness", "HomeAndConstructionBusiness", "ProfessionalService"],
+    name: BUSINESS_NAME,
     url: SITE_URL,
-    telephone: "+1-252-582-6094",
-
+    telephone: BUSINESS_PHONE,
+    email: BUSINESS_EMAIL,
     description:
-      "Concrete cutting, core drilling, slab cutting, wall cutting, reinforced concrete cutting, and demolition services in Goldsboro, NC and Eastern North Carolina.",
-
+      "Concrete cutting, core drilling, slab cutting, wall cutting, reinforced concrete cutting, and demolition services in Goldsboro, Raleigh, Wilson, Kinston, Smithfield, Selma, and Eastern North Carolina.",
+    image: `${SITE_URL}/og-image.jpg`,
+    logo: `${SITE_URL}/favicon.ico`,
+    sameAs: [GBP_URL],
     areaServed: [
-      "Goldsboro, NC",
-      "Wayne County, NC",
-      "Wilson, NC",
-      "Smithfield, NC",
-      "Selma, NC",
-      "Kinston, NC",
-      "Eastern North Carolina",
+      { "@type": "City", name: "Goldsboro, NC" },
+      { "@type": "City", name: "Raleigh, NC" },
+      { "@type": "City", name: "Wilson, NC" },
+      { "@type": "City", name: "Kinston, NC" },
+      { "@type": "City", name: "Smithfield, NC" },
+      { "@type": "City", name: "Selma, NC" },
+      { "@type": "AdministrativeArea", name: "Eastern North Carolina" },
     ],
-
     address: {
       "@type": "PostalAddress",
       addressLocality: "Goldsboro",
       addressRegion: "NC",
       addressCountry: "US",
     },
-
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        opens: "08:00",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "07:00",
         closes: "18:00",
       },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Saturday",
+        opens: "08:00",
+        closes: "17:00",
+      },
     ],
-
-    makesOffer: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Core Drilling" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Concrete Slab Cutting" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Concrete Wall Cutting" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Reinforced Concrete Cutting" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Building Demolition" } },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: BUSINESS_PHONE,
+        contactType: "customer service",
+        areaServed: "US",
+        availableLanguage: "English",
+      },
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Concrete Cutting Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Core Drilling" },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Concrete Slab Cutting" },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Concrete Wall Cutting" },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Reinforced Wall Cutting" },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Building Demolition" },
+        },
+      ],
+    },
   };
-
-  if (BUSINESS_EMAIL) {
-    localBusinessSchema.email = BUSINESS_EMAIL;
-  }
 
   const websiteSchema = {
     "@context": "https://schema.org",
@@ -151,9 +182,32 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
   };
 
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: BUSINESS_NAME,
+    url: SITE_URL,
+    email: BUSINESS_EMAIL,
+    telephone: BUSINESS_PHONE,
+    sameAs: [GBP_URL],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen overflow-x-hidden bg-white text-[#0d0d0d]">
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
@@ -161,6 +215,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
 
         <Header />
