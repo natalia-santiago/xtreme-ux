@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import HeroSlider from "@/components/HeroSlider";
@@ -51,6 +53,21 @@ const faqs = [
   },
 ];
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
+function trackEvent(eventName: string, eventLabel: string) {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", eventName, {
+      event_category: "Lead",
+      event_label: eventLabel,
+    });
+  }
+}
+
 export default function Home() {
   return (
     <>
@@ -92,6 +109,9 @@ export default function Home() {
                 href={GBP_URL}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() =>
+                  trackEvent("google_reviews_click", "Homepage About Reviews Button")
+                }
                 className="inline-flex rounded-md border border-black/15 px-5 py-3 font-semibold text-black transition hover:border-black/30 hover:bg-black/[0.02]"
               >
                 View Google Reviews
@@ -263,6 +283,9 @@ export default function Home() {
                   href={GBP_URL}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() =>
+                    trackEvent("google_reviews_click", "Homepage GBP Section Button")
+                  }
                   className="inline-flex rounded-md bg-[#c1121f] px-5 py-3 font-semibold text-white transition hover:opacity-90"
                 >
                   View Google Business Profile
@@ -390,6 +413,7 @@ export default function Home() {
 
               <a
                 href="tel:+12525826094"
+                onClick={() => trackEvent("phone_call_click", "Homepage CTA Phone")}
                 className="inline-flex rounded-xl border border-white/40 px-7 py-4 text-lg font-semibold text-white transition hover:bg-white/10"
               >
                 Or call: (252) 582-6094

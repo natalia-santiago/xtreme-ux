@@ -1,6 +1,23 @@
+"use client";
+
 import Link from "next/link";
 
 const GBP_URL = "https://share.google/w4xRGpqyikqr5mvJ9";
+
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
+function trackEvent(eventName: string, eventLabel: string) {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", eventName, {
+      event_category: "Lead",
+      event_label: eventLabel,
+    });
+  }
+}
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -25,7 +42,11 @@ export default function Footer() {
             <h3 className="text-base font-semibold">Contact</h3>
 
             <p className="mt-3 text-sm text-white/75">
-              <a href="tel:+12525826094" className="hover:text-white">
+              <a
+                href="tel:+12525826094"
+                className="hover:text-white"
+                onClick={() => trackEvent("phone_call_click", "Footer Phone")}
+              >
                 (252) 582-6094
               </a>
             </p>
@@ -44,6 +65,9 @@ export default function Footer() {
                 href={GBP_URL}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() =>
+                  trackEvent("google_reviews_click", "Footer Google Reviews")
+                }
                 className="inline-flex w-fit rounded-md border border-white/15 px-4 py-2 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
                 View Google Reviews

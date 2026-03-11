@@ -1,6 +1,23 @@
+"use client";
+
 import Link from "next/link";
 
 const GBP_URL = "https://share.google/w4xRGpqyikqr5mvJ9";
+
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
+function trackEvent(eventName: string, eventLabel: string) {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", eventName, {
+      event_category: "Lead",
+      event_label: eventLabel,
+    });
+  }
+}
 
 export default function Contact() {
   return (
@@ -12,7 +29,11 @@ export default function Contact() {
           <p className="mt-2 max-w-2xl text-black/70">
             Let us know what services you&apos;re looking for, and our team will
             get back to you quickly. For immediate attention, call or text{" "}
-            <a className="font-semibold text-[#c1121f]" href="tel:+12525826094">
+            <a
+              className="font-semibold text-[#c1121f]"
+              href="tel:+12525826094"
+              onClick={() => trackEvent("phone_call_click", "Contact Page Phone")}
+            >
               (252) 582-6094
             </a>
             .
@@ -31,6 +52,7 @@ export default function Contact() {
               data-netlify="true"
               data-netlify-honeypot="bot-field"
               className="space-y-5"
+              onSubmit={() => trackEvent("quote_form_submit", "Quote Request Form")}
             >
               <input type="hidden" name="form-name" value="quote" />
 
@@ -182,6 +204,9 @@ export default function Contact() {
                 href={GBP_URL}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() =>
+                  trackEvent("google_reviews_click", "Contact Page GBP Button")
+                }
                 className="inline-flex justify-center rounded-md bg-[#c1121f] px-5 py-3 font-semibold text-white transition hover:opacity-90"
               >
                 View Google Business Profile
@@ -191,6 +216,9 @@ export default function Contact() {
                 href={GBP_URL}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() =>
+                  trackEvent("google_reviews_click", "Contact Page Reviews Button")
+                }
                 className="inline-flex justify-center rounded-md border border-black/15 bg-white px-5 py-3 font-semibold text-black transition hover:border-black/30 hover:bg-black/[0.02]"
               >
                 Read Reviews
@@ -231,7 +259,11 @@ export default function Contact() {
             <div className="mt-6 space-y-2 text-sm text-black/70">
               <p>
                 Phone:{" "}
-                <a className="font-semibold hover:text-black" href="tel:+12525826094">
+                <a
+                  className="font-semibold hover:text-black"
+                  href="tel:+12525826094"
+                  onClick={() => trackEvent("phone_call_click", "Contact Sidebar Phone")}
+                >
                   (252) 582-6094
                 </a>
               </p>
