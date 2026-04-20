@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 
 declare global {
   interface Window {
@@ -18,28 +19,25 @@ function trackEvent(eventName: string, eventLabel: string) {
 }
 
 export default function ContactForm() {
-  return (
-    <form
-      name="quote"
-      method="POST"
-      action="/thank-you.html"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      className="space-y-6"
-      onSubmit={() => trackEvent("quote_form_submit", "Quote Request Form")}
-    >
-      <input type="hidden" name="form-name" value="quote" />
+  const [showDemoMessage, setShowDemoMessage] = useState(false);
 
-      <p className="hidden">
-        <label>
-          Don&apos;t fill this out if you&apos;re human:{" "}
-          <input name="bot-field" />
-        </label>
-      </p>
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    trackEvent("quote_form_demo_submit", "Quote Request Form Demo");
+    setShowDemoMessage(true);
+  }
+
+  return (
+    <form className="space-y-6" onSubmit={handleSubmit}>
+      <div className="rounded-2xl border border-black/10 bg-[#f7f7f7] px-4 py-4 text-sm leading-6 text-black/65">
+        This form is shown as part of a portfolio case study demo. It does not
+        send submissions.
+      </div>
 
       <div className="rounded-2xl border border-black/10 bg-[#f7f7f7] px-4 py-4 text-sm leading-6 text-black/65">
         Include your job-site location, service needed, dimensions, thickness,
-        and project timeline so we can review the work more accurately.
+        and project timeline so the form reflects a realistic quote request
+        experience.
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
@@ -180,12 +178,19 @@ export default function ContactForm() {
         Fields marked with <span className="font-semibold text-[#c1121f]">*</span> are required.
       </p>
 
+      {showDemoMessage && (
+        <div className="rounded-2xl border border-[#c1121f]/15 bg-[#c1121f]/5 px-4 py-4 text-sm leading-6 text-black/75">
+          Demo only. This case study form is not connected to a live inbox or quote
+          request system.
+        </div>
+      )}
+
       <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
         <button
           type="submit"
           className="inline-flex min-h-[48px] justify-center rounded-md bg-[#c1121f] px-6 py-3 font-semibold text-white transition hover:bg-[#a30f1a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c1121f] focus-visible:ring-offset-2"
         >
-          Send Quote Request
+          Submit Demo Form
         </button>
 
         <Link
