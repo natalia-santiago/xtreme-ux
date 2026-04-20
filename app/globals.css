@@ -1,19 +1,15 @@
-/* app/globals.css */
 @import "tailwindcss";
 
 :root {
-  /* Brand Colors */
   --black: #0d0d0d;
   --white: #ffffff;
   --red: #c1121f;
   --red-dark: #8f0e16;
   --gray: #e5e5e5;
 
-  /* Site Colors (LOCKED for consistency) */
   --background: #ffffff;
   --foreground: #171717;
 
-  /* Tell the browser we are a LIGHT site (prevents auto dark rendering changes) */
   color-scheme: light;
 }
 
@@ -24,35 +20,31 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* ✅ Removed prefers-color-scheme override on purpose.
-   If you want consistent visuals across devices, we should not
-   auto-switch to dark mode based on the user's phone settings. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-/* Base */
 html {
-  /* Prevent iOS text auto-resizing that makes fonts/spacing look different */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-
-  /* Prevent iOS/Chrome from "helping" with zoom on input focus */
   scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
+  min-width: 320px;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-
-  /* Smoother type rendering */
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* Prevent horizontal "wobble" on small screens */
   max-width: 100%;
   overflow-x: hidden;
 }
 
-/* Make media behave consistently */
 img,
 video,
 canvas,
@@ -62,30 +54,47 @@ svg {
   height: auto;
 }
 
-/* Better tap behavior on iOS */
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    opacity 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
-/* Avoid iOS input zoom + weird font jumps:
-   iOS zooms inputs if font-size < 16px. */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(193, 18, 31, 0.28);
+  outline-offset: 3px;
+}
+
 input,
 select,
 textarea {
   font-size: 16px;
 }
 
-/* --- Advanced Concrete-like hero texture (no image needed) --- */
+::selection {
+  background: rgba(193, 18, 31, 0.16);
+  color: var(--black);
+}
+
 .hero-industrial {
   background:
     radial-gradient(1000px 600px at 65% 30%, rgba(193, 18, 31, 0.18), transparent 60%),
     radial-gradient(900px 600px at 20% 60%, rgba(255, 255, 255, 0.08), transparent 55%),
-    linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 35%, rgba(0,0,0,0.25) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 35%, rgba(0, 0, 0, 0.25) 100%),
     repeating-linear-gradient(
       135deg,
-      rgba(255,255,255,0.06) 0px,
-      rgba(255,255,255,0.06) 1px,
+      rgba(255, 255, 255, 0.06) 0px,
+      rgba(255, 255, 255, 0.06) 1px,
       transparent 1px,
       transparent 10px
     ),

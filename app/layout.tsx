@@ -1,96 +1,103 @@
 import "./globals.css";
+import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileStickyBar from "@/components/MobileStickyBar";
-import Script from "next/script";
 
 const SITE_URL = "https://xtremeconcretecutting.com";
-
 const BUSINESS_NAME = "Xtreme Concrete Cutting & Demolition LLC";
 const BUSINESS_PHONE = "+1-252-582-6094";
 const BUSINESS_EMAIL = "info@xtremeconcretecutting.com";
 const GBP_URL = "https://share.google/w4xRGpqyikqr5mvJ9";
 const GA_ID = "G-QBT6H2SE8R";
 
-export const metadata = {
-  metadataBase: new URL(SITE_URL),
+const SITE_DESCRIPTION =
+  "Concrete cutting, core drilling, slab cutting, wall cutting, reinforced wall cutting, and demolition services in Goldsboro, Wayne County, Wilson, Kinston, Smithfield, Selma, and Eastern North Carolina.";
 
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default:
+      "Concrete Cutting & Demolition in Eastern North Carolina | Xtreme Concrete Cutting",
+    template: "%s",
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: BUSINESS_NAME,
+  category: "construction",
   alternates: {
     canonical: SITE_URL,
   },
-
-  title: {
-    default:
-      "Concrete Cutting & Demolition in Goldsboro, NC | Xtreme Concrete Cutting",
-    template: "%s | Xtreme Concrete Cutting",
-  },
-
-  description:
-    "Concrete cutting, core drilling, slab cutting, wall cutting, reinforced concrete cutting, and demolition services in Goldsboro, Raleigh, Wilson, Kinston, Smithfield, Selma, and Eastern North Carolina.",
-
   keywords: [
     "concrete cutting Goldsboro NC",
     "core drilling Goldsboro NC",
     "concrete demolition Goldsboro NC",
     "slab cutting Goldsboro NC",
     "wall cutting Goldsboro NC",
-    "reinforced concrete cutting NC",
+    "reinforced wall cutting NC",
     "concrete cutting Eastern North Carolina",
-    "concrete cutting Raleigh NC",
+    "concrete cutting Wayne County NC",
     "concrete cutting Wilson NC",
     "concrete cutting Kinston NC",
     "concrete cutting Smithfield NC",
     "concrete cutting Selma NC",
     "demolition contractor Goldsboro NC",
-    "concrete contractor Eastern NC",
     "core drilling Eastern NC",
   ],
-
   icons: {
     icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
-
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
-
   openGraph: {
-    title: "Xtreme Concrete Cutting & Demolition",
-    description:
-      "Concrete cutting, core drilling, slab cutting, wall cutting, reinforced concrete cutting, and demolition services across Goldsboro and Eastern North Carolina.",
+    title:
+      "Concrete Cutting & Demolition in Eastern North Carolina | Xtreme Concrete Cutting",
+    description: SITE_DESCRIPTION,
     url: SITE_URL,
-    siteName: "Xtreme Concrete Cutting",
+    siteName: BUSINESS_NAME,
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/og-image.jpg",
+        url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "Xtreme Concrete Cutting & Demolition",
+        alt: "Xtreme Concrete Cutting & Demolition in Eastern North Carolina",
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
-    title: "Xtreme Concrete Cutting & Demolition",
-    description:
-      "Concrete cutting, core drilling, and demolition services in Goldsboro, Raleigh, and Eastern North Carolina.",
-    images: ["/og-image.jpg"],
+    title:
+      "Concrete Cutting & Demolition in Eastern North Carolina | Xtreme Concrete Cutting",
+    description: SITE_DESCRIPTION,
+    images: [`${SITE_URL}/og-image.jpg`],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": [
@@ -98,18 +105,18 @@ export default function RootLayout({
       "HomeAndConstructionBusiness",
       "ProfessionalService",
     ],
+    "@id": `${SITE_URL}#localbusiness`,
     name: BUSINESS_NAME,
     url: SITE_URL,
     telephone: BUSINESS_PHONE,
     email: BUSINESS_EMAIL,
-    description:
-      "Concrete cutting, core drilling, slab cutting, wall cutting, reinforced concrete cutting, and demolition services in Goldsboro, Raleigh, Wilson, Kinston, Smithfield, Selma, and Eastern North Carolina.",
+    description: SITE_DESCRIPTION,
     image: `${SITE_URL}/og-image.jpg`,
     logo: `${SITE_URL}/favicon.ico`,
     sameAs: [GBP_URL],
     areaServed: [
       { "@type": "City", name: "Goldsboro, NC" },
-      { "@type": "City", name: "Raleigh, NC" },
+      { "@type": "AdministrativeArea", name: "Wayne County, NC" },
       { "@type": "City", name: "Wilson, NC" },
       { "@type": "City", name: "Kinston, NC" },
       { "@type": "City", name: "Smithfield, NC" },
@@ -140,6 +147,7 @@ export default function RootLayout({
       {
         "@type": "ContactPoint",
         telephone: BUSINESS_PHONE,
+        email: BUSINESS_EMAIL,
         contactType: "customer service",
         areaServed: "US",
         availableLanguage: "English",
@@ -151,23 +159,43 @@ export default function RootLayout({
       itemListElement: [
         {
           "@type": "Offer",
-          itemOffered: { "@type": "Service", name: "Core Drilling" },
+          itemOffered: {
+            "@type": "Service",
+            name: "Core Drilling",
+            areaServed: "Eastern North Carolina",
+          },
         },
         {
           "@type": "Offer",
-          itemOffered: { "@type": "Service", name: "Concrete Slab Cutting" },
+          itemOffered: {
+            "@type": "Service",
+            name: "Concrete Slab Cutting",
+            areaServed: "Eastern North Carolina",
+          },
         },
         {
           "@type": "Offer",
-          itemOffered: { "@type": "Service", name: "Concrete Wall Cutting" },
+          itemOffered: {
+            "@type": "Service",
+            name: "Concrete Wall Cutting",
+            areaServed: "Eastern North Carolina",
+          },
         },
         {
           "@type": "Offer",
-          itemOffered: { "@type": "Service", name: "Reinforced Wall Cutting" },
+          itemOffered: {
+            "@type": "Service",
+            name: "Reinforced Wall Cutting",
+            areaServed: "Eastern North Carolina",
+          },
         },
         {
           "@type": "Offer",
-          itemOffered: { "@type": "Service", name: "Building Demolition" },
+          itemOffered: {
+            "@type": "Service",
+            name: "Building Demolition",
+            areaServed: "Eastern North Carolina",
+          },
         },
       ],
     },
@@ -176,62 +204,21 @@ export default function RootLayout({
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Xtreme Concrete Cutting & Demolition",
+    "@id": `${SITE_URL}#website`,
+    name: BUSINESS_NAME,
     url: SITE_URL,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE_URL}/?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${SITE_URL}#organization`,
     name: BUSINESS_NAME,
     url: SITE_URL,
     email: BUSINESS_EMAIL,
     telephone: BUSINESS_PHONE,
+    logo: `${SITE_URL}/favicon.ico`,
     sameAs: [GBP_URL],
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What areas do you serve?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "We are based in Goldsboro, NC and serve Eastern North Carolina including Raleigh, Wilson, Kinston, Smithfield, Selma, and surrounding areas.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What types of jobs do you take on?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "We handle residential, commercial, and industrial concrete cutting and demolition projects.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do you keep the job site clean?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "We prioritize safety and keep the work area as clean and controlled as possible throughout the job.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Where can I find your business on Google?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "You can view our Google Business Profile for reviews, company details, and contact information directly from our website.",
-        },
-      },
-    ],
   };
 
   return (
@@ -241,6 +228,7 @@ export default function RootLayout({
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
         />
+
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -250,22 +238,29 @@ export default function RootLayout({
           `}
         </Script>
 
-        <script
+        <Script
+          id="ld-local-business"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-        />
-        <script
+          strategy="afterInteractive"
+        >
+          {JSON.stringify(localBusinessSchema)}
+        </Script>
+
+        <Script
+          id="ld-website"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
-        <script
+          strategy="afterInteractive"
+        >
+          {JSON.stringify(websiteSchema)}
+        </Script>
+
+        <Script
+          id="ld-organization"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
+          strategy="afterInteractive"
+        >
+          {JSON.stringify(organizationSchema)}
+        </Script>
 
         <Header />
         <main className="pb-24 sm:pb-0">{children}</main>
