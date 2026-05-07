@@ -305,7 +305,7 @@ export default function HomePageClient() {
 
           <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
             <Image
-              src="/images/demolition.jpg"
+              src="https://res.cloudinary.com/dwvmjpgxh/image/upload/q_auto/f_auto/v1778181457/demolition_hjjagj.jpg"
               alt="Concrete demolition and debris removal project in Goldsboro NC"
               width={1200}
               height={900}
