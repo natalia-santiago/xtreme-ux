@@ -98,11 +98,11 @@ export default function Header() {
           >
             <Image
               src="/logo-transparent.png"
-              alt="Xtreme Concrete Cutting & Demolition company logo"
-              width={64}
-              height={64}
+              alt="Xtreme Concrete Cutting & Demolition"
+              width={70}
+              height={70}
               priority
-              className="h-13 w-13 shrink-0 sm:h-15 sm:w-15"
+              unoptimized
             />
 
             <div className="min-w-0 leading-tight">

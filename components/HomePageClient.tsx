@@ -15,35 +15,35 @@ const services = [
   {
     title: "Core Drilling",
     desc: "Clean, accurate holes for plumbing, electrical, HVAC, and structural work.",
-    img: "/images/core-drilling.jpeg",
+    img: "https://res.cloudinary.com/dwvmjpgxh/image/upload/q_auto/f_auto/v1778181447/core-drilling_msfpw7.jpg",
     alt: "Core drilling service for plumbing, electrical, and HVAC concrete openings",
     href: "/services#core-drilling",
   },
   {
     title: "Concrete Slab Cutting",
     desc: "Precise slab cutting for floors, roads, driveways, trenching, and commercial slabs.",
-    img: "/images/slab-cutting.jpeg",
+    img: "https://res.cloudinary.com/dwvmjpgxh/image/upload/q_auto/f_auto/v1778181452/slab-cutting_uixrgg.jpg",
     alt: "Concrete slab cutting service with professional saw equipment",
     href: "/services#slab-cutting",
   },
   {
     title: "Concrete Wall Cutting",
     desc: "Controlled wall cutting for doors, windows, utility openings, and concrete modifications.",
-    img: "/images/safety.jpg",
+    img: "https://res.cloudinary.com/dwvmjpgxh/image/upload/q_auto/f_auto/v1778181455/safety_fciste.jpg",
     alt: "Concrete wall cutting team preparing for controlled cutting work",
     href: "/services#wall-cutting",
   },
   {
     title: "Reinforced Wall Cutting",
     desc: "Specialized cutting for reinforced structural concrete where precision and control matter.",
-    img: "/images/reinforced-wall-cutting.png",
+    img: "https://res.cloudinary.com/dwvmjpgxh/image/upload/q_auto/f_auto/v1778181452/reinforced-wall-cutting_e0laae.png",
     alt: "Reinforced concrete wall cutting equipment for structural cutting work",
     href: "/services#reinforced-wall-cutting",
   },
   {
     title: "Building Demolition",
     desc: "Safe demolition and concrete removal for renovation, rebuild, and site preparation projects.",
-    img: "/images/demolition.jpg",
+    img: "https://res.cloudinary.com/dwvmjpgxh/image/upload/q_auto/f_auto/v1778181457/demolition_hjjagj.jpg",
     alt: "Building demolition and concrete removal project in Eastern North Carolina",
     href: "/services#building-demolition",
   },
@@ -395,7 +395,7 @@ export default function HomePageClient() {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
           <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
             <Image
-              src="/images/core-drilling-rig.png"
+              src="https://res.cloudinary.com/dwvmjpgxh/image/upload/q_auto/f_auto/v1778181450/core-drilling-rig_gb1g7f.png"
               alt="Professional core drilling machine for concrete cutting work"
               width={1200}
               height={900}
@@ -470,7 +470,7 @@ export default function HomePageClient() {
 
             <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
               <Image
-                src="/images/core-drilling-action.jpeg"
+                src="https://res.cloudinary.com/dwvmjpgxh/image/upload/q_auto/f_auto/v1778181447/core-drilling-action_o5oo10.jpg"
                 alt="Concrete core drilling in action on a job site"
                 width={1200}
                 height={900}

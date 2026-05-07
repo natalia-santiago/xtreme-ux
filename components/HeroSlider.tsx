@@ -49,21 +49,21 @@ export default function HeroSlider() {
   const slides: Slide[] = useMemo(
     () => [
       {
-        src: "/hero/slide-1.png",
+        src: "https://res.cloudinary.com/dwvmjpgxh/image/upload/q_auto/f_auto/v1778181437/slide-1_xdqt2q.png",
         alt: "Concrete cutting and demolition work on a job site in Goldsboro North Carolina",
         eyebrow: "Concrete Cutting & Demolition • Goldsboro, NC",
         subtitle:
           "Fast, clean, and precise concrete cutting and demolition for residential, commercial, and contractor projects across Eastern North Carolina.",
       },
       {
-        src: "/hero/slide-2.png",
+        src: "https://res.cloudinary.com/dwvmjpgxh/image/upload/q_auto/f_auto/v1778181437/slide-2_dgegct.png",
         alt: "Worker performing concrete slab cutting and wall cutting with professional saw equipment",
         eyebrow: "Core Drilling • Slab Cutting • Wall Cutting",
         subtitle:
           "Professional equipment, controlled work areas, and accurate cutting for slabs, walls, openings, and structural concrete modifications.",
       },
       {
-        src: "/hero/slide-3.png",
+        src: "https://res.cloudinary.com/dwvmjpgxh/image/upload/q_auto/f_auto/v1778181438/slide-3_owwqyg.png",
         alt: "Concrete saw cutting through a slab for demolition and project support",
         eyebrow: "Licensed & Insured • Serving Eastern NC",
         subtitle:
